@@ -1030,25 +1030,20 @@ Figures~\ref{fig:theory-probability-of-sale} and \ref{fig:theory-probability-of-
 %	\end{center}
 %\end{figure}
 
-\section{Applications}
-\label{sec:applications}
-
-Our theory describes the effects of asymmetric information of the
+To sum up, our theory describes the effects of asymmetric information of the
 seller (the bank) on the outcome of the foreclosure auction, taking
 into account the judgment amount. Asymmetric information has been
 recognized to be highly relevant for the understanding of how markets
 works, on policy implications, and on welfare analyses at least since
-Akerlof's seminal contribution on the lemon's market \citep{akerlof1970market}. Dealing with all the implications of asymmetric
-information on the seller's side in (foreclosure) auctions is beyond
-the scope of this article. However, we will describe two examples in
-which the presence or absence of asymmetric information plays a
-crucial role: securitization of mortgages and the question of judicial
-versus non-judicial foreclosures.
+Akerlof's seminal contribution on the lemon's market \citep{akerlof1970market}. In the following section, we will describe one important application in which asymmetric information plays a crucial role.
 
-\subsection{Securitization}
+%\section{Applications}
+%\label{sec:applications}
+
+\section{Securitization}
 \label{sec:securitization}
 
-\subsubsection{Overview}
+%\subsection{Overview}
 
 The securitization of mortgages moved to the forefront of attention during the financial crisis. The Financial Inquiry Commission 
 \AN{add citation, p. xxiii} considered "collapsing mortgage-lending standards and the mortgage securitization pipeline [to have] lit and spread the flame of contagion and crisis." Mortgage securitization led to moral hazard and to banks excessively granting mortgages, which later caused a collapse of the mortgage backed securities market \AN{cite Keys et al, Mian-Sufi, Dewatripont-Rochet-Tirole}. While in 1995 only 30\% of mortgages were securitized, this fraction increased to 80\% in 2006 \AN{Dewatripont-Rochet-Tirole p. 19}.
@@ -1136,7 +1131,7 @@ In the following, we test these hypotheses with our data.
 %          (2012)]\label{fig:securitization}}
 %  \end{figure}
 
-\subsubsection{Data}
+\subsection{Data}
 
 Since we have the name of the plaintiff in each foreclosure auction,
 we can categorize mortgages as securitized vs non-securitized. We use
@@ -1213,7 +1208,7 @@ results on the discontinuity of the probability of sale at the judgment amount. 
 approach, we use additional data that we hand collected for a subset
 of the data set.
 
-\subsubsection{Discontinuity}
+\subsection{Discontinuity}
 
 
 Our theoretical results on the judgment amount and the effect of the
@@ -1266,7 +1261,7 @@ bank.
 %        \label{fig:tests_sec}
 %\end{figure}
 
-\subsubsection{Bidding strategy}
+\subsection{Bidding Strategy}
 
 Figures~\ref{fig:probability-of-sale-securitized} and
 \ref{fig:probability-of-sale-nonsecuritized} provide indirect evidence
@@ -1440,6 +1435,8 @@ Note that comparing the bidding functions for bids below $v_J$ is difficult, sin
 	\end{center}
 \end{figure}
 
+\subsection{Implications}
+
 The above analysis provides evidence for the existence of asymmetric information in mortgage markets. The analysis uncovers a difference between securitized and non-securitized mortgages and is consistent with the hypothesis that banks holding securitized mortgages are indeed less informed about the quality of the foreclosed property than banks holding non-securitized mortgages.
 
 This is consistent with the hypothesis of moral hazard in the securitization process: if a mortgage is expected to be securitized, then the originating bank has less incentives to collect information about the quality of the mortgage and will be hence less informed than for non-securitized mortgages. While the literature so far has focused on moral hazard with respect to acquiring information about the probability of default, our analysis has uncovered another dimension along which there is moral hazard: The bank exerts insufficient effort to collect information about the loss given default. Our results suggest that the effect of securitization on the loss given default is similarly important for the expected loss as the effect on the probability of default. The bank's resale price as a function of the judgment amount is 21\% lower for securitized than for non-securitized mortgages (0.340 vs 0.431).\footnote{We provide results for the resale prices rather than losses given default, since there is more reliable data on this. A rough estimate of the difference in terms of the loss given default can be obtained by assuming that the loss given default is $v_J-x_S$. This would mean a 16\% higher loss given default for securitized than for non-securitized mortgages (1-0.340 versus 1-0.431). The loss given default is typically higher than $v_J-x_S$, because of administrative costs.} This is comparable to the 10\% to 20\% increase of the probability of default for securitized versus non-securitized mortgages (5.5\% to 6\% versus 5\%) estimated by \cite{keys2008did}.
@@ -1448,6 +1445,9 @@ The alternative explanation of adverse selection rather than moral hazard in imp
 
 Another alternative explanation is that originating banks do collect information about the loss given default, but this information is lost at a later stage. However, this is also implausible, because originating banks are required to hold tranches of the securitized mortgage pool. If they had any relevant information about the quality of the property, they would have an incentive to use it in the foreclosure auction (or to share it with the plaintiff in the foreclosure auction).
 
+Our results have a number of policy implications. First, it provides further support for the concern about moral hazard in the securitization process. Our findings hence speak in favor of policies seeking to reduce moral hazard, such as requiring better documentation for securitized mortgages, reducing government support for securitization through securitization agencies, or holding the originating bank liable in case a mortgagee defaults (as is the case for European covered bonds), see e.g. \cite{keys2008did}, \cite{tirole2011illiquidity}, and \cite{campbell2013mortgage}.
+
+Second, our results emphasize an additional dimension besides the probability of default along which moral hazard can affect the securitization process: the loss given default. This suggests that documentation not just of the characteristics of the borrower, but also of the property are important. At the same time, our finding also highlights some of the difficulties in new regulations: new regulatory requirements set criteria for the documented loan-to-value ratio of mortgages, e.g. the new Solvency II Directive of the European Union requires that mortgages in the securitization pool to meet certain requirements on the loan-to-value ratio\footnote{See the Commission Delegated Regulation (EU) 2015/35, Article 177(1)(h).} However, our results suggest that there is asymmetric information about the value of properties and hence also about the loan-to-value ratio.
 
 %\subsection{Non-Judicial Foreclosures}
 %\label{sec:non-judic-forecl}
@@ -1562,9 +1562,11 @@ Another alternative explanation is that originating banks do collect information
 
 We develop a novel theory of foreclosure auctions and test some of its predictions with data from Palm Beach county (Florida, US). We find evidence for strategic bidding and asymmetric information, with the bank being the informed party. First, the data reveal bunching in bids at the judgement amount as the theory predicts either under symmetric or asymmetric information. Second, there is a discontinuity in the probability of sale to the brokers, as the theory predicts under asymmetric information. Third, by looking separately at securitized and non-securitized mortgages, we find that banks bid lower for the securitized mortgages. Our theory predicts lower bids when the bank is less informed.
 
-Recent literature, e.g.\ \cite{keys2008did} has emphasized the role of soft information as the predictor of the probability of default.  Only hard, verifiable information is priced when the mortgage is securitized. Knowing that the mortgage will be securitized, the lender may not have sufficient incentives to collect soft information. On the other hand, \cite{qi2009loss} present evidence that the probability of default and loss given default are positively correlated. Thus, soft financial information is relevant for the property resale values, and loss of this information for the securitized mortgages means also less information about the resale values, thereby leading to lower bids in the foreclosure auctions.
+The latter findings are consistent with the hypothesis that moral hazard is involved in the securitization process: banks expect not to suffer from the entire loss of a default of a borrower. Hence, they will exert less effort collecting information about the value of the property used as collateral for a mortgage. These findings complement the findings in \cite{keys2008did} that banks collect less information about the probability of default for securitized than for non-securitized mortgages.
 
-The implication of our findings in terms of the policy debate about securitization is that there is an additional reason to be cautious about securitization. This speaks in favor of some of the policies that have been proposed, such as requiring better documentation for securitized mortgages, reducing government support for securitization through securitization agencies, or holding the originating bank liable in case a mortgagee defaults (as is the case for European covered bonds), see e.g. \cite{keys2008did}, \cite{tirole2011illiquidity}, and \cite{campbell2013mortgage}.
+%Recent literature, e.g.\ \cite{keys2008did} has emphasized the role of soft information as the predictor of the probability of default.  Only hard, verifiable information is priced when the mortgage is securitized. Knowing that the mortgage will be securitized, the lender may not have sufficient incentives to collect soft information. On the other hand, \cite{qi2009loss} present evidence that the probability of default and loss given default are positively correlated. Thus, soft financial information is relevant for the property resale values, and loss of this information for the securitized mortgages means also less information about the resale values, thereby leading to lower bids in the foreclosure auctions.
+%
+%The implication of our findings in terms of the policy debate about securitization is that there is an additional reason to be cautious about securitization. This speaks in favor of some of the policies that have been proposed, such as requiring better documentation for securitized mortgages, reducing government support for securitization through securitization agencies, or holding the originating bank liable in case a mortgagee defaults (as is the case for European covered bonds), see e.g. \cite{keys2008did}, \cite{tirole2011illiquidity}, and \cite{campbell2013mortgage}.
 
 %
 %which implies that our finding is consistent with the moral hazard story.
@@ -1596,9 +1598,9 @@ described in this article. The other half of the states allow for both
 judicial and non-judicial foreclosures.  Mortgage contracts
 with a so called a ``power of sale'' clause allow the bank to choose a non-judicial
 foreclosure in case of a failure to repay, i.e. the bank can directly
-seize the property and sell it without going through a court. 
+seize the property and sell it without going through a court. \AN{We should be careful here. At one point we say that 1/3 of the states have judicial foreclosures. Elsewhere (including here), we say roughtly half. \cite{nelson2004reforming} says roughly 40\% of the states have judicial foreclosures.} 
 
-The power of sale clause allows the bank to market the property, and to verifiably disclose, through inspections, the information regarding its condition. This eliminates the signalling premium, but introduces another distortion. The bank, acting as a de facto owner of the property, is no longer obligated to pay the owner back any auction proceed above the judgment amount. Thus the monopoly price distortion now extends to prices above the judgment amount. So the overall welfare effect of the power of sale is ambiguous. We plan to estimate this effect in future work.
+The power of sale clause allows the bank to market the property, and to verifiably disclose, through inspections, some of the information regarding its condition. This reduces the signalling premium, but introduces another distortion. The bank, acting as a de facto owner of the property, is no longer obligated to pay the owner back any auction proceedings above the judgment amount. Thus the monopoly price distortion now extends to prices above the judgment amount. So the overall welfare effect of the power of sale is ambiguous. We plan to estimate this effect in future work.
 
 \bibliography{foreclosures}
 %\bibliography{bilateral}
