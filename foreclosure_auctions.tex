@@ -249,13 +249,15 @@ For our theoretical analysis, we build on two strains of literature. The first a
 
 Evidence of strategic behavior and asymmetric information has long been a focus of the empirical auction literature, beginning with \cite{hendricks1988empirical} and \cite{hendricks2003empirical} for offshore oil auctions, and  \cite{nyborg2002bidder} and \cite{hortaccsu2012valuing} for treasury auctions. \cite{hortaccsu2012valuing} find evidence of dealers' informational advantage in Canadian Treasury auctions.
 
+Recently, \cite{stroebel2013asymmetric} has provided evidence of asymmetric information concerning the collateral value in mortgage lending. \cite{stroebel2013asymmetric} finds that integrated lenders have superior information about the quality of the houses they lend against, and this information allows them to reduce the probability of foreclosure by as much as $40\%$.
+
 The application of our theory to securitization relates to the growing literature that has been sparked by the interest in the determinants of the financial crisis, such as \cite{keys2008did}, \cite{brunnermeier2009deciphering}, \cite{tirole2011illiquidity}. Our analysis confirms the suspicion voiced in this literature that securitization led to moral hazard. Our analysis can be seen as complementary to the analysis in \cite{keys2008did}, who provide evidence for asymmetric information with respect to the probability of default. Our analysis shows existence of asymmetric information with respect to the other determinant of the expected shortfall of a mortgage: the loss given default (which is determined by the value of the house).
 In a wider sense, our article relates to the growing literature that uses insights from auctions to analyze important questions  in financial markets, such as \cite{heller1998auctions}, \cite{hortacsu2010mechanism}, 
 \cite{cassola20132007},  \cite{zulehner2013competition}.
 
 
 \section{Foreclosure process}
-Property foreclosure is a remedy allowed by law to the lender if the borrower defaults on the mortgage. While it generally transfers the ownership of the property to the lender, the process may be a lengthy one and the details depend on the jurisdiction. In the US, roughy one third of the states adopt what is called a \emph{judicial} foreclosure, while the rest is comprised of the \emph{nonjudicial} foreclosure states. See Table \ref{tbl:judicial}.
+Property foreclosure is a remedy allowed by law to the lender if the borrower defaults on the mortgage. While it generally transfers the ownership of the property to the lender, the process may be a lengthy one and the details depend on the jurisdiction. In the US, roughy one third of the states adopt what is called a \emph{judicial} foreclosure, while the rest is comprised of the \emph{nonjudicial} foreclosure states. See Table \ref{tbl:judicial}.\footnote{This and other information concerning judicial and nonjudicial foreclosures can be found at \url{www.nolo.com}.}
 
 The main legal difference between judicial and nonjudicial foreclosure is that in the former, the process takes place in the court system, while in the latter, it takes place outside the courts. Judicial foreclosures always result in the property being sold at a public auction, while the nonjudicial foreclosure usually involves a sale of the property by the trustee under the power of sale clause. The trustee sale may or may not be conducted through auction, but still have to generally comply with various state laws, even though it is performed outside of the court system.\footnote{A handful of states (Connecticut, Maine and Vermont) allow for a \emph{strict foreclosure}, where the property title is transferred to the lender immediately after the default.} 
 
@@ -375,7 +377,7 @@ $X_S$; they only privately observe their own signals $X_B^i$. Broker $i$'s expec
 
 We make the following assumptions concerning the expected valuations of the brokers.
 
-\begin{assumption}[broker valuations]\label{as:valuations}
+\begin{assumption}[Broker valuations]\label{as:valuations}
 A broker's expected valuation is differentiable and strictly increasing in own signal $x_B$, and nondecreasing in the bank's signal $x_S$, 
 \begin{align}
   \frac{\partial u_B(x_B,x_S)}{\partial x_B}\geq \alpha,\quad
