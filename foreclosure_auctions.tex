@@ -1047,9 +1047,42 @@ versus non-judicial foreclosures.
 
 \subsubsection{Overview}
 
-Securitization played an important role during the financial crisis: mortgagees of a large number of securitized mortgages defaulted
+The securitization of mortgages moved to the forefront of attention during the financial crisis. The Financial Inquiry Commission 
+\AN{add citation, p. xxiii} considered "collapsing mortgage-lending standards and the mortgage securitization pipeline [to have] lit and spread the flame of contagion and crisis." Mortgage securitization led to moral hazard and to banks excessively granting mortgages, which later caused a collapse of the mortgage backed securities market \AN{cite Keys et al, Mian-Sufi, Dewatripont-Rochet-Tirole}. While in 1995 only 30\% of mortgages were securitized, this fraction increased to 80\% in 2006 \AN{Dewatripont-Rochet-Tirole p. 19}.
 
----
+Securitization involves the following steps. First, the
+originating bank grants a mortgage to the home owner. Second, in order to get
+liquidity, the originating bank sells the cash flows from a pool of
+mortgages to a securitization agency, typically one of the Government
+Sponsored Enterprises Freddie Mac or Fannie Mae. The securitization
+agency splits the pool of assets into tranches and sells the tranches
+to investors on the capital market. Third, if a mortgage defaults, then the trustee of the pool of mortgages will apply for a foreclosure at the respective court. Subsequently, the trustee of the mortgage pool will act as the plaintiff in the foreclosure auction.
+
+Securitization agencies
+have chosen countermeasures to avoid adverse selection. First,
+only mortgages can be securitized for which the credit score (the FICO score) of the borrower is above a threshold.\footnote{This is a somewhat simplified account,
+	since securitization agencies chose two cutoffs for FICO scores:
+	above a FICO score of 620, banks can securitize \emph{low
+		documentation mortgages}, below a score of 600, it is very
+	difficult to securitize mortgages. Between 600 and 620, banks can
+	securitize mortgages, but have to provide full documentation.}
+Second, the originating bank has to offer all properties with similar observable characteristics eligible for securitization and the agency
+randomly picks the mortgages to be securitized. See \cite{keys2008did} for more details of the securitization process.
+
+However, securitization agencies' measures do not prevent moral hazard, since the credit score is not a perfect signal about the expected loss of a mortgage -- which is what the bank or the investors buying the mortgage backed securitized ultimately care about. One reason is that the expected loss is the product of the probability of default and the loss given default. The credit score is only a proxy for the probability of default, but not the loss given default. Before the crisis, banks were known to grant mortgages with a high loan-to-value ratio, the mortgage sometimes even exceeding the value of the house. Since this means that only a small fraction of the mortgage can be recovered in case of a foreclosure, this led to high losses given default. A second reason is that the credit score is not a perfect signal about the probability of default of a borrower. Bank's typically collect additional (soft) information to assess the probability of default.
+
+The securitization of mortgages reduces a bank's incentive to collect additional information about additional components of the expected loss (i.e. the loss given default and soft information about the probability of default) and leads to moral hazard. \cite{keys2008did} have shown that moral hazard led to banks collecting insufficient soft information about the probability of default.
+
+While the literature so far has focused on the probability of default, it is reasonable to suspect that moral hazard also led to banks collecting insufficient information about the other component of the expected loss, the \emph{loss given default}. This is, first, because a high loan-to-value ratio is known to be positively correlated both with the probability of default and the loss given default \citep{qi2009loss}.\footnote{In which direction the causality goes is not important for our analysis. It could (and mostly likely does) go both ways: a high loan-to-value ratio makes strategic default more likely. At the same time, borrowers with financial difficulties are less likely to invest in the maintenance of the property, which decreases its value and increases the loss given default.} Second, a more careful investigation of a potential borrower should also directly reveal information about the value of the property.
+
+Our theory and our data allow us to look more carefully at the question of moral hazard with respect to the loss given default: if a bank collected information about the value of the property (and hence the loss given default) when it granted the mortgage, it is likely to have an informational advantage over third-party bidders during the foreclosure auction.
+
+In particular, we can use information on whether a foreclosed mortgage was securitized or not. If securitization leads to moral hazard, we should expect the bank to have no (or only a minor) informational advantage over third-party bidders for case of securitized mortgages. This means essentially an independent private value auction. For non-securitized mortgages we should expect the bank to have an informational advantage. This means an auction with a common value component on the bank's side.
+
+
+
+
+--- start cut ---
 
 There is an ongoing controversy about the securitization of mortgages
 in the U.S. Often, the claim is made that
@@ -1195,6 +1228,8 @@ For the foreclosure auction, this implies that for securitized mortgages, we sho
 %lost at the securitization stage.
 
 This leads us to the empirically testable implication that is an adaptation of Hypothesis~\ref{hyp:discontinuity}. Given that holders of securitized mortgages are less informed about the quality of the house and holders of non-securitized mortgages are better informed, we get the following hypothesis:
+
+--- end cut ---
 
 \begin{conjecture}[Probability of sale for securitized and non-securitized mortgages]\label{hyp:discontinuity-sec-nonsec}
 	For securitized mortgages, the probability of sale $\rho(p_S)$ is a continuous, decreasing function of $p_S$. For non-securitized mortgges, we should expect the probability of sale to the broker $\rho(p_S)$ to exhibit the following pattern. Initially, $\rho(p_S)$ decreases in $p_S$. Then, over a certain interval $p_S \in [\tilde p, v_J)$, where $\tilde p < v_J$, $\rho(p_S)$ increases in $p_S$. At $p_S = v_J$, $\rho(p_S)$ drops discontinuously to a lower value, $\rho(v_J)<\lim_{p_S \uparrow v_J} \rho(p_S)$, and from that point on, decreases in a continuous fashion.
