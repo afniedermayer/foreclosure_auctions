@@ -257,66 +257,28 @@ In a wider sense, our article relates to the growing literature that uses insigh
 
 
 \section{Foreclosure process}
-Property foreclosure is a remedy allowed by law to the lender if the borrower defaults on the mortgage. While it generally transfers the ownership of the property to the lender, the process may be a lengthy one and the details depend on the jurisdiction. In the US, roughy one third of the states adopt what is called a \emph{judicial} foreclosure, while the rest is comprised of the \emph{nonjudicial} foreclosure states. See Table \ref{tbl:judicial}.\footnote{This and other information concerning judicial and nonjudicial foreclosures can be found at \url{www.nolo.com}.}\AN{Art, I'm not sure we want to add the table, since this makes the reader believe that we will say something about non-judicial foreclosures. We should also cite a law journal article (like \cite{nelson2004reforming} rather than a website.)}
+Property foreclosure is a remedy allowed by law to the lender if the borrower defaults on the mortgage. While it generally transfers the ownership of the property to the lender, the process may be a lengthy one and the details depend on the jurisdiction. In the US, roughly $40\%$ of the states adopt what is called a \emph{judicial} foreclosure, while the rest is comprised of the \emph{nonjudicial} foreclosure states. See Figure \ref{fig:judicial}.\footnote{This and other information concerning judicial and nonjudicial foreclosures can be found in \cite{nelson2004reforming}.}
+
 
 The main legal difference between judicial and nonjudicial foreclosure is that in the former, the process takes place in the court system, while in the latter, it takes place outside the courts. Judicial foreclosures always result in the property being sold at a public auction, while the nonjudicial foreclosure usually involves a sale of the property by the trustee under the power of sale clause. The trustee sale may or may not be conducted through auction, but still have to generally comply with various state laws, even though it is performed outside of the court system.\footnote{A handful of states (Connecticut, Maine and Vermont) allow for a \emph{strict foreclosure}, where the property title is transferred to the lender immediately after the default.} 
 
-\begin{table}[t!]
+\begin{figure}[t]
 \centering
-\begin{tabular}{c c} 
- \hline
-Judicial states & Nonjudicial states  \\ [0.5ex] 
- \hline
- Connecticut & Alabama  \\ 
- Delaware & Alaska  \\
- Florida & Arizona \\
-Hawaii & Arkanzas  \\
- Illinois & California  \\
- Indiana & Colorado \\
- Iowa & District of Columbia\\
- Kansas & Georgia \\
- Kentucky & Idaho \\
- Louisiana & Maryland\\
- Maine & Massachusetts \\
- New Jersey & Michigan\\
- New Mexico & Minnesota\\
- New York & Mississippi\\
- North Dakota & Missouri\\
- Ohio & Montana\\
- Oklahoma & Nebraska \\
- Pennsylvania & Nevada \\
- South Carolina & New Hampshire\\
- South Dakota & New Mexico\\
- Vermont & North Carolina\\
- Wisconsin & Oklahoma\\
- & Oregon \\
- & Rhode Island \\
- & South Dakota \\
- & Tenessee \\
- & Texas \\
- & Utah \\
- & Vermont \\
- & Virginia \\
- & Washington \\
- & West Virginia \\
- & Wyoming \\
-  [1ex] 
- \hline
-\end{tabular}
-\caption{Judicial and nonjudicial foreclosure states. Some states use both types of foreclosure and are listed in both columns.}
-\label{tbl:judicial}
-\end{table}
+\includegraphics{graphics/foreclosure_map}
+\caption{States with judicial and non-judicial foreclosures}
+\label{fig:judicial}
+\end{figure}
 
-In this paper, we focus on judicial foreclosures. In our empirical application, we study foreclosure auctions in a judicial state (Florida). The judicial foreclosure process generally consists of the following steps. 
+In this paper, we focus on judicial foreclosures. In our empirical application, we study foreclosure auctions in a judicial state (Florida). The judicial foreclosure process generally consists of the following steps.\footnote{These steps are described in relative detail at e.g.\ \url{www.nolo.com}.}
 
 \begin{enumerate}
 \item The mortgage holder misses several payments on the mortgage. In some states, the lender is allowed to start the foreclosure process after the borrower has missed one payment. In practice, however, the process usually begins after three payments have been missed.
 \item The lender informs the mortgage holder, usually through a letter of intent with a specified deadline, that it intends to begin the foreclosure process. This notice of intent, or ``breach letter", allows the borrower to make up the missed payments before the deadline. The deadline is usually set at 30 days.
 \item If the mortgage is still delinquent, the lender proceeds to file a lawsuit, usually in the county where the property is located. The complaint is served to the mortgagee, usually by the county sheriff. At this point, the mortgagee becomes a defendant in the foreclosure lawsuit.
 \item The defendant is given a certain amount of time, usually 20 - 30 days, to respond. The defendant does not have to  respond. The defendant may choose to respond if he or she is able to raise a substantive complaint, e.g.\ concerning the ownership of the mortgage or unfair lending practices.
-\item If the complaint goes uncontested or the defendant does not raise a substantive complaint, the lender is granted a judgement of foreclosure. The judgement will specify the date of the foreclosure sale. The sale is conducted through a public auction. The bank is allowed to credit bid up to the debt amount (also called the judgement amount), while other participants (usually real estate brokers) are required to submit bids in cash or cash equivalent. The auction is usually conducted in an open format. Some counties have adopted Internet auctions.\footnote{This is the case for Palm Beach county in Florida, the source of the data for the empirical application in our paper.} The property title is awarded to the highest bidder, and the auction price is equal to the highest bid. If the lender is \emph{not} the highest bidder, the lender receives the payment equal to the minimum of the auction price and the judgement amount. If the sale price exceeds the judgement amount, the surplus is used to satisfy the junior liens, if any. The remaining surplus is paid to the defendant.\label{enum:auction}
+\item If the complaint goes uncontested or the defendant does not raise a substantive complaint, the lender is granted a judgment of foreclosure. The judgment will specify the date of the foreclosure sale. The sale is conducted through a public auction. The bank is allowed to credit bid up to the debt amount (also called the judgment amount), while other participants (usually real estate brokers) are required to submit bids in cash or cash equivalent. The auction is usually conducted in an open format. Some counties have adopted Internet auctions.\footnote{This is the case for Palm Beach county in Florida, the source of the data for the empirical application in our paper.} The property title is awarded to the highest bidder, and the auction price is equal to the highest bid. If the lender is \emph{not} the highest bidder, the lender receives the payment equal to the minimum of the auction price and the judgment amount. If the sale price exceeds the judgment amount, the surplus is used to satisfy the junior liens, if any. The remaining surplus is paid to the defendant.\label{enum:auction}
 \end{enumerate}
-\AN{Art, could you please provide the source for this?}
+
 
 
 In the next section, we present a stylized model of a foreclosure auction that captures the main institutional features described in point~(\ref{enum:auction}.) above.
@@ -1118,7 +1080,7 @@ If banks holding securitized mortgages are less informed than banks holding non-
 
 
 \begin{conjecture}\label{hyp:slope}
-	For bids below $v_J$, we have \[ p_S^{nonsec}(x_S) > p_S^{sec}(x_S), \quad\quad x_S>0 .\] \end{conjecture}
+	For bids below the judgment amount $v_J$, a bank holding a non-securitized mortgage chooses a higher bid $p^\text{nonsec}$ than a bank holding a securitized mortgage $p^\text{sec}$ given the same opportunity cost $x_S$. Formally, \[ p_S^{nonsec}(x_S) > p_S^{sec}(x_S), \quad\quad x_S>0 .\] \end{conjecture}
 
 In the following, we test these hypotheses with our data.
 
@@ -1266,10 +1228,10 @@ bank.
 
 Figures~\ref{fig:probability-of-sale-securitized} and
 \ref{fig:probability-of-sale-nonsecuritized} provide indirect evidence
-for a common value component for non-securitized mortgages, while there is no such evidence for the securitized mortgages. However, for non-securitized mortgages there are relatively few observations above the judgement value, which might also explain the visual absence of the discontinuity. In this section, we develop and implement a direct test of our Hypothesis \ref{hyp:slope},
+for a common value component for non-securitized mortgages, while there is no such evidence for the securitized mortgages. In this section, we develop and implement a direct test of our Hypothesis \ref{hyp:slope},
 \[ p_S^{nonsec}(x_S) > p_S^{sec}(x_S).\]
 
-While the theoretical prediction are clear, the empirical strategy is more involved. It is not sufficient to observe that
+While the theoretical predictions are clear, the empirical strategy is more involved. It is not sufficient to observe that
 banks' bids are higher for non-securitized than for securitized mortgages as depicted in Fig.~\ref{fig:distr-maxbid-sec-nonsec}. The reason for a different distribution of bids may
 be either the signaling premium (higher $p_S(x_S)$ for a given $x_S$), a selection effect (different distributions
 of $x_S$ for securitized and non-securitized mortgages), or a combination of both. We have to control for $x_S$ in order to
@@ -1282,7 +1244,7 @@ For each foreclosure case, we first traced back the original legal documents, fr
 
 A comparison of the data on foreclosed properties and the data from the Property Appraiser's database revealed that a perfect matching of observations in the two data sets is not possible, since the address listed in the legal documents is not always of the same format (or containing the same details) as the information recorded in the appraisal database. In order to err on the side of caution, we only used observations for which we can be certain about the identity of the buyer (being the property at foreclosure under study).\AN{Steven, I don't understand what "(being the property at foreclosure under study)" means. Could you please clarify.} 
 
-We identified 332 properties among 644 foreclosed cases in the month.\footnote{There were 983 properties listed for foreclosure for September 2011, but 339 of them were canceled prior to the auction dates.} The next sale of the foreclosed properties happened mostly in the year of 2012, though a few of the properties were not resold until early 2013. This leaves us with 250 observations for which the resale price is available. Since our aim is to get an estimate of the bank's valuation distribution, we only used the data from the foreclosure auctions in which the bank won. This restricts our sample to 199 observations, with 77 of them in the category of securitized properties and 122 cases of non-securitized properties. 
+We identified 332 properties among 644 foreclosed cases in the month.\footnote{There were 983 properties listed for foreclosure for September 2011, but 339 of them were canceled prior to the auction dates.} The next sale of the foreclosed properties happened mostly in the year of 2012, though a few of the properties were not resold until early 2013. This leaves us with 250 observations for which the resale price is available. Since our aim is to get an estimate of the bank's valuation distribution, we only used the data from the foreclosure auctions in which the bank won. This restricts our sample to 199 observations, with 77 of them in the category of securitized mortgages and 122 cases of non-securitized mortgages. 
 
 Table~\ref{tab:descriptive-securitization-resale} provides descriptive
 statistics of the data collected.\AN{[POSSIBLY ADD COLUMN WITH ASSESSMENT
@@ -1407,7 +1369,7 @@ for both types of mortgages.
 %Note that without unobserved heterogeneity, the function $\tilde G_S^{-1}(\tilde F_S(x_S))$ can be interpreted as the bidding function $p_S(x_S)$. With unobserved heterogeneity it should be interpreted as an "average bidding function". If for some non-securitized mortgages there is a private value auction and for others a common value component auction, then $\tilde G_S^{-1}(\tilde F_S(x_S))$ will be a weighted average of $p_S^*(x_S)$ and $p_S^0(x_S)$. This average would still be higher than the bidding function $p_S^0(x_S)$ for securitized mortgages by Corollary~\ref{cor:bidding-sec-nonsec}. See Appendix~\ref{sec:avg-bid-heterogeneity} for more details.
 
 
-Figure~\ref{fig:ps-xs-sec-nonsec} shows estimates of $p_S(x_S)$ for securitized and non-securitized mortgages. The estimates are consistent with the first alternative in our Hypothesis \ref{hyp:sp}, namely that the bank's bid is higher for non-securitized than for securitized mortgages, controlling for the bank's opportunity cost $x_S$.
+Figure~\ref{fig:ps-xs-sec-nonsec} shows estimates of $p_S(x_S)$ for securitized and non-securitized mortgages. The estimates are consistent with our Hypothesis \ref{hyp:slope}, namely that the bank's bid is higher for non-securitized than for securitized mortgages, controlling for the bank's opportunity cost $x_S$.
 
 Note that comparing the bidding functions for bids below $v_J$ is difficult, since the bidding function below $v_J$ has a different support for securitized and non-securitized mortgages. It is more practical to compare the inverse bidding function $x_S(p_S)$ for securitized and non-securitized mortgages, since the support is $[0,v_J]$ in both cases. The inverse bidding functions are shown if Figure~\ref{fig:xs-ps-sec-nonsec}. Computing the 90\% confidence interval of the difference of the inverse bidding functions for securitized and non-securitized mortgages reveals that the difference is significant for high values of $p_S$, see Figure~\ref{fig:xs-diff-10}. 
 %For low values of $p_S$, the difference is not significant and close to 0. This is consistent with the theoretical prediction that the signaling premium is 0 at the lower bound of support.
@@ -1592,14 +1554,14 @@ The latter findings are consistent with the hypothesis that moral hazard is invo
 
 Our theory can also be used for a welfare comparison of judicial and non-judicial foreclosures. 
 %Besides securitization as an application of our theory, we provide a second example of an application: the welfare comparison of judicial and non-judicial foreclosures.
-Roughly half of the states in the
+According to \cite{nelson2004reforming}, roughly $40\%$ of the states in the
 U.S. (including Florida) only allow judicial foreclosures, i.e. the
 foreclosure auction has to be run by a court with rules as the ones
 described in this article. The other half of the states allow for both
 judicial and non-judicial foreclosures.  Mortgage contracts
 with a so called a ``power of sale'' clause allow the bank to choose a non-judicial
 foreclosure in case of a failure to repay, i.e. the bank can directly
-seize the property and sell it without going through a court. \AN{We should be careful here. At one point we say that 1/3 of the states have judicial foreclosures. Elsewhere (including here), we say roughtly half. \cite{nelson2004reforming} says roughly 40\% of the states have judicial foreclosures.} 
+seize the property and sell it without going through a court.  
 
 The power of sale clause allows the bank to market the property, and to verifiably disclose, through inspections, some of the information regarding its condition. This reduces the signalling premium, but introduces another distortion. The bank, acting as a de facto owner of the property, is no longer obligated to pay the owner back any auction proceedings above the judgment amount. Thus the monopoly price distortion now extends to prices above the judgment amount. So the overall welfare effect of the power of sale is ambiguous. We plan to estimate this effect in future work.
 
@@ -1693,7 +1655,6 @@ With a given value for $\underline x$, the solution to the system \eqref{eq:sinp
 Since $\hat X_B'(p) > 0$, it follows that the expected profit function $\hat \Pi (x_S,\hat x_S,p)$ satisfies the following \emph{single-crossing} condition: the ratio of the slopes
 \begin{align}
 \frac{\partial\hat\Pi_{S}(x_{S},\hat{x}_{S},p)/\partial p}{\partial\hat \Pi_{S}(x_{S},\hat{x}_{S},p)/\partial\hat{x}_{S}}
-\label{eq:sc}
 \end{align}
 is increasing in $x_{S}$. This single-crossing condition implies that there are no profitable within-equilibrium deviations. Indeed, if  $\hat{p}\geq\underline{p}$ is such a deviation, then differntial equation (\ref{eq:ivp}) implies
 \begin{align*}
