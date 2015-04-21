@@ -10,8 +10,10 @@
 \usepackage{amsmath}
 \usepackage{a4,latexsym,amsmath,amstext,graphicx,amssymb}
 \usepackage{amsthm}
+\usepackage{dsfont}
 \usepackage{bbm}
 \usepackage{color}
+\usepackage{verbatim}
 
 % %
 %\usepackage{setspace}
@@ -27,10 +29,10 @@
 \newcommand{\PX}[1]{\textcolor{green}{[PX: #1]}}
 
 % turn off comments:
-%\newcommand{\mycomment}[1]{}
-%\newcommand{\AN}[1]{}
-%\newcommand{\AS}[1]{}
-%\newcommand{\PX}[1]{}
+% \newcommand{\mycomment}[1]{}
+% \newcommand{\AN}[1]{}
+% \newcommand{\AS}[1]{}
+% \newcommand{\PX}[1]{}
 
 
 \setcounter{MaxMatrixCols}{10}
@@ -102,7 +104,6 @@
 \maketitle
 
 \begin{abstract}
-
   We develop a novel theory of real estate foreclosure auctions, which
   have the special feature that the lender acts as a seller for low
   and as a buyer for high prices. The theory yields several
@@ -111,105 +112,110 @@
   information. Using novel data from Palm Beach County (FL, US), we
   find evidence of both strategic bidding and asymmetric information,
   with the lender being the informed party. Moreover, the data are
-  consistent with mortgage securitization leading to moral hazard with
-  respect to banks' effort in collecting information about the value
+  consistent with moral hazard in mortgage securitization:
+  banks collect less information about the value
   of the mortgage collateral.
-
-%
-  % We get two predictions: (i) lenders' bids are bunched at the
-  % amount owed, (ii) in the presence of a common value component the
-  % probability of selling to a third-party bidder is non-monotone and
-  % discontinuous in the lender's maximum bid. Using novel data from
-  % Palm Beach County (FL, US), we show that (i) and (ii) are
-  % consistent with the data. Further, our theory and our data allow
-  % us to confirm the wide-held suspicion that lenders of securitized
-  % mortgages are less informed than lenders of non-securitized
-  % mortgages.  Our theory also allows a welfare analysis of judicial
-  % versus non-judicial foreclosures.
 \end{abstract}
 
 \setlength{\baselineskip}{1.5\baselineskip}
 % \doublespacing
 
-\noindent \textbf{Keywords: } foreclosure auctions, common value component, securitization \\
+\noindent \textbf{Keywords: } foreclosure auctions, asymmetric information, securitization \\
 \textbf{JEL Codes: } to be added
 
 
 \section{Introduction}
 
 Foreclosures of real estate have a substantial economic impact. In
-2013, 609,00 residential sales in the U.S. were foreclosure related
+2013, 609,000 residential sales in the U.S. were foreclosure related
 (foreclosure auctions or sales of real estate owned by a lender),
 amounting to 10.3\% of total residential sales.\footnote{See
   \url{http://www.realtytrac.com/Content/foreclosure-market-report/december-and-year-end-2013-us-residential-and-foreclosure-sales-report-7967}.}
-
 Foreclosures played an even larger role during the 2007 and 2008
 financial crisis, when "four million families [...] lost their homes
 to foreclosure and another four and a half million [...] slipped into
 the foreclosure process or are seriously behind on the mortgage
-payments" \cite[p. xv]{angelides2011financial}. The foreclosure wave had
-a strong connection to the securitization of mortgages: the rate of
-securitization of subprime mortgages increased from 46 per cent in
-2001 to 81 per cent in 2006 \cite[p. 19]{dewatripont2010balancing}. It is widely
-believed that the securitization of mortgages led to moral hazard on
-the side of originating banks and that "collapsing mortgage-lending
+payments" \cite[Financial Crisis Inquiry Report,][p. xv]{angelides2011financial}. 
+%\begin{comment}
+Preceding the foreclosure wave, the securitization of mortgages increased from 30 per cent in
+1995 to 80 per cent in 2006 \cite[p. 19]{dewatripont2010balancing}. It is widely
+believed that the securitization of mortgages led to moral hazard for originating banks and that
+"collapsing mortgage-lending
 standards and the mortgage securitization pipeline lit and spread the
-flame of contagion and crisis" \cite[p. xxiii]{angelides2011financial}.\footnote{See \cite{brunnermeier2009deciphering,mian2009consequences,keys2008did,tirole2011illiquidity} for the academic literature.}
+flame of contagion and crisis" \cite[p. xxiii]{angelides2011financial}.\footnote{See
+\cite{brunnermeier2009deciphering,mian2009consequences,keys2008did,tirole2011illiquidity} for the
+academic literature.}
+%\end{comment}
+\AS{...}
+\AN{I added back the commented out text. We are already massively underselling our results
+and present our results in a very unappealing way for a general audience. No need
+to make it even worse. I spent quite some time reading \cite{dewatripont2010balancing},
+\cite{angelides2011financial}, etc., which are probably the best sources for our purposes.
+Art, if you find something better/a better source, please let me know.}
 
 We develop a novel theory of foreclosure auctions, incorporating the
-institutional specificities of foreclosures. Our theory serves both a
-better understanding of the foreclosure process and, as it will become
-apparent later, also provides insight about the moral hazard involved
-in securitization. A foreclosure auction is run by a government agency
-(in our data set the Clerk and Comptroller's Office of Palm Beach
-County, FL) after a mortgagee stopped making payments to the
+institutional details of foreclosures. 
+Our theory serves both a
+better understanding of the foreclosure process and  also provides insight about the moral hazard involved
+in securitization.
+
+A foreclosure auction is run by a government agency (in our data set the Clerk and Comptroller's Office of Palm Beach
+County, FL), after a mortgagee stopped making payments to the
 lender. The lender, typically a bank, and third-party bidders,
 typically real estate brokers, participate in this auction. An
 important feature of foreclosure auctions is that payments up to the
-amount owed (the judgment amount) are paid to the lender, payments
-above the judgment value, if any, are paid to the owner of the
+\emph{judgment amount} (which is basically the amount owed\footnote{The judgment amount
+chosen by the court is by and large the amount owed to the bank. It can additionally include 
+unpaid utilities fees, legal fees, etc.}) are paid to the lender, payments
+above the judgment amount, if any, are paid to the owner of the
 property. The owner typically does not participate. In such an
 auction, the bank essentially acts as a seller below the judgment
 amount, and as a buyer above the judgment amount.
 
 Another important feature of foreclosure auctions is that the bank is
-likely to have superior information about the value of the mortgage
-collateral being auctioned off. There are several reasons for
+likely to have superior information about the value of the property. There are several reasons for
 this. First, lenders typically spend large resources on appraisals to
 get a more precise value of the collateral before granting
 mortgages. %\AN{cite stroebel} 
 Second, banks also typically put
 significant effort in assessing the probability of default of
 potential borrowers. The probability of default is well known to be
-negatively correlated with the value of the collateral \cite[see][and the references therein]{qi2009loss}. Hence, the bank's signal about
-the financial soundness of the borrower also serves as a signal for
-the value of the property.
+negatively correlated with the value of the collateral \cite[see][and the references therein]{qi2009loss}. 
+
+Unlike in a regular real estate sales, this information is not readily available to the buyers. The owner is neither obligated nor may have an incentive to cooperate with the foreclosing lender in providing access to the property to the potential buyers. Moreover, the properties in foreclosure are sometimes abandoned by their owners, making buyer access and physical inspection problematic.
+% Hence, the bank's signal about
+% the financial soundness of the borrower also serves as a signal for
+% the value of the property. 
+% Third, banks often provide home equity lines of credit to homeowners. These lines of credit can be used for home renovations that likely add value to the house, and the bank will be informed about such investments made by the owner.
+
+\AN{I commented out the text on the bank verifiably disclosing info, since it's a red herring and not really
+helpful in understanding what our paper is about.}
+
+
+
 
 In contrast to the bank, which is mostly interested in reselling the
 property and may have superior information about quality, brokers
 typically participate with the intent of renovating the
 property.\footnote{When visiting websites of several brokers
-  participating in the foreclosure auctions in our dataset, we could
+  participating in the foreclosure auctions in our data set, we could
   see that they often specialize in renovating foreclosed properties.}
-The costs of renovation are to a much larger degree driven by
-idiosyncratic components. Hence, it is a reasonable approximation to
-assume private values on the brokers' side.\footnote{Assuming private
+The costs of renovation are to a much larger degree driven by brokers'
+idiosyncratic components, which, at least to a first approximations, may be independent from the bank's information about the quality.\footnote{Assuming private
   values also helps us to focus on the common value component on the
   seller's side, which has been ignored so far in the empirical
   literature. Our theoretical results are likely to extend to a setup
   in which buyers also have information about the common value
-  component. However, such a setup would add much more complexity to
-  our model than in standard auction models, due to the complexity of
-  a common value component on the seller's side and the change of
-  incentives at the judgment amount. Further, for a better
+  component. However, such a setup would add an additional layer of complexity to
+  our model. Further, for a better
   understanding of moral hazard in the securitization process, what
-  matters is the common value component on the seller's side.}
+  matters is the common value component on the \emph{seller's side}.} In our model, the broker's valuation generally depends both on the quality and its own idiosyncratic component.
 
 % The brokers' expected payoffs depend both of the bank's information
 % and on their own idiosyncratic components (signals). The latter may
 % reflect their own value added to the property.\footnote{When
 % visiting websites of several brokers participating in the
-% foreclosure auctions in our dataset, we could see that they often
+% foreclosure auctions in our data set, we could see that they often
 % specialize in renovating foreclosed properties.} This value added
 % may be largely independent of the baseline value of the house, so we
 % assume that the broker and bank signals are independent. The
@@ -219,7 +225,8 @@ assume private values on the brokers' side.\footnote{Assuming private
 % assumed that only the bank is the informed party.
 
 We derive participants' equilibrium bidding strategies in a
-foreclosure auction with a common value component. However, as a
+foreclosure auction with a common value component on the bank's side. 
+However, as a
 benchmark, we first analyze a symmetric information environment, where
 the bank's information is known to the brokers. This independent
 private value (IPV) setup is nested within our general model. Under
@@ -234,26 +241,27 @@ bid still lowers the probability of sale, but does not lead to higher
 revenues for the bank, since the additional revenue goes to the
 original owner. This change of the trade-off causes a bunching of
 banks' bids at the judgment amount. If the bank's valuation is
-sufficiently high -- higher than the judgment amount- the bank does
+sufficiently high -- higher than the judgment amount -- the bank does
 not want to sell the property, but would want to keep it
 itself. Hence, for high valuations, the bank bids its own type, just
 as a buyer would do in an English auction.
 
 A bank intent on selling the property will bid more in an asymmetric
-information environment than in a symmetric information environment
-(the \emph{signalling premium}). The reason is that there is a further
+information environment than in a symmetric information environment. 
+The reason is that there is a further
 effect in the bank's trade-off: the bank's bid also serves as a costly
-signal about the quality of the property. Intuitively speaking, the
+signal about the quality of the property. Intuitively, the
 bank is willing to incur the cost of an excessively low probability of
 sale (given the price conditional on sale), in order to prove that the
 quality of the house is high. This cost has to be sufficiently high,
 so that bank's with lower qualities do not have an incentive to
-imitate banks with lower qualities.
+imitate banks with lower qualities. This \emph{signalling premium} means 
+that the bank charges more than the sum of its valuation and the 
+markup in a symmetric information environment.
 
-Additionally to the signalling premium, one still has the bunching
-result from the symmetric information setup. However, bunching has a
-surprising implication in the presence of a common value component:
-there cannot be an equilibrium where the bank's biding strategy is
+The bunching result from the symmetric information setup holds also with asymmetric information. Now, however, bunching has a
+surprising implication:
+there cannot be an equilibrium where the bank's bidding strategy is
 continuous around the bunch. The reason for this is that brokers who
 are supposed to drop slightly below the judgment amount will instead
 prefer to wait for the price to rise above the judgment amount, as
@@ -272,8 +280,8 @@ above the judgment amount.
 
 
 Our theory has two striking empirically testable implications. First,
-there is bunching of banks' bids at the judgment amount the judgment
-amount. Second, in the presence of both auctions with symmetric and
+there is bunching of banks' bids at the judgment amount. 
+Second, in the presence of both auctions with symmetric and
 asymmetric information, one should expect to observe the
 following. For values slightly below the judgment amount, the
 probability of sale (the probability of the bank selling the house to
@@ -285,25 +293,27 @@ is a gap in the bank's bid distribution just below the judgment amount
 symmetric information there is no gap. Hence, bids observed just below
 the judgment amount will be from symmetric information auctions. For
 other bids, one will observe a mixture of symmetric and asymmetric
-information. Second, the signalling premium leads to higher bids by
-the bank and hence a lower probability of sale for asymmetric
-information than symmetric information. Putting the two pieces
+information. Second, under asymmetric
+information, the signalling premium leads to higher bids by
+the bank and hence a lower probability of sale. Putting the two pieces
 together reveals that the probability of sale will be lower in the gap
 than just below and just above the gap. This implies a probability of
 sale which is non-monotonic with the bank's bid at the lower bound of
 the gap and decreases discontinuously at the upper bound of the gap
-(which is the judgment amount).\footnote{If there are only two types
-  of auctions, auctions with symmetric information and one type of
-  auction with asymmetric information, there will also be a
-  discontinuity at the lower bound of the gap, so that there would be
-  two discontinuities. However, only the upper discontinuity is robust
-  to multiple types of asymmetric auctions: for all auctions with
-  asymmetric information, the upper bound of the gap is at the
-  judgment amount. However, the lower bound of the gap will be
-  different. This will smooth out the discontinuity at the lower
-  bounds of the gaps, but not the discontinuity at the judgment
-  amount.} This \emph{non-monotonicity} (which appears like a
-violation of the law of demand) and \emph{demand discontinuity} are
+(which is the judgment amount).
+% \footnote{If there are only two types
+%   of auctions (auctions with symmetric information and one type of
+%   auction with asymmetric information) there will also be a
+%   discontinuity at the lower bound of the gap, so that there would be
+%   two discontinuities. However, only the upper discontinuity is robust
+%   to multiple types of asymmetric auctions: for all auctions with
+%   asymmetric information, the upper bound of the gap is at the
+%   judgment amount. However, the lower bound of the gap will be
+%   different. This will smooth out the discontinuity at the lower
+%   bounds of the gaps, but not the discontinuity at the judgment
+%   amount.} 
+  This \emph{non-monotonicity} (which appears like a
+violation of the law of demand, but is really a consequence of sample selection) and \emph{demand discontinuity} are
 empirically testable implications of our theory.
 
 
@@ -343,7 +353,7 @@ amount. We also observe that the probability of sale increases with
 the bank's bid just below the judgment amount. Further, demand
 exhibits a downward discontinuity at the judgment amount. This points,
 as we have argued, to the presence of auctions with both symmetric and
-asymmetric information in our dataset.
+asymmetric information in our data set.
 
 % As we have argued, the distinguishing feature of the asymmetric
 % information environment is the signalling premium. Controlling for
@@ -366,18 +376,14 @@ asymmetric information in our dataset.
 % directly, thus providing further empirical support for the existence
 % of asymmetric information in foreclosure auctions.
 
-Our theory and our data allow us to investigate moral hazard in the
-securitization process.  The securitization of mortgages was a major
+Our theory and our data allow us to investigate how securitization affects the information about
+the mortgage collateral. Moral hazard in the securitization of mortgages was a major
 concern during the financial crisis.  Originating banks securitized
-their mortgages through securitization agencies (mostly the Government
-Sponsored Enterprises Freddie Mac and Fannie Mae), the securitized
-assets were then sold on the capital market. Moral hazard is generally
-believed to have played an important role during the financial crisis:
+their mortgages and sold the mortgage backed securities on the capital market.
+ This reduced banks' "skin in the
+game" and thus led to moral hazard:
 banks did not exert sufficient effort in gathering information before
-granting mortgages and hence excessively granted mortgages and
-securitized them, shifting the burden to the holders of securitized
-assets and Government Sponsored Entities (and often ultimately to the
-taxpayer) \cite[see][]{mian2009consequences,dewatripont2010balancing,keys2008did}.
+granting mortgages and hence excessively granted mortgages \cite[see][]{mian2009consequences,dewatripont2010balancing,keys2008did}.
 
 The connection between moral hazard at the stage of granting a
 mortgage and asymmetric information at the time of the foreclosure is
@@ -389,34 +395,22 @@ informed about the probability of default -- this is indeed what the
 literature has focused on so far. However, there is also a second
 effect: once a mortgage defaults, the loss given default (and hence
 the value of the collateral) matters. If the originating bank spent
-less effort gathering information about the value of the collateral
+less effort gathering the information about the value of the collateral
 when granting the mortgage, it will also have less of an informational
 advantage during the foreclosure auction.
 
-% Different levels of information gathering for securitized and
-% non-securitized mortgages have empirically testable implications for
-% foreclosure auctions: a bank holding a non-securitized mortgage is
-% expected to be better informed about the value of the property than
-% a bank holding a securitized mortgage. This is for two
-% reasons. First, the bank is more likely to have gathered information
-% about the loan-to-value ratio of a property for non-securitized
-% mortgages. Second, the bank's estimate of the probability of default
-% of a borrower is informative about the value of the property at the
-% time of the foreclosure (see \cite{qi2009loss}). A reason for the
-% relation between the probability of default and the value of the
-% property is that borrowers in financial distress are less likely to
-% invest in the maintenance of their property.\footnote{Causality can,
-% of course, also go in the opposite direction: home owners with a
-% higher loan-to-value ratio have more of an incentive to default. For
-% our purposes, it is immaterial in which direction the causality
-% goes. In either case, superior information about the probability of
-% default also leads to superior information about the value of the
-% property.} % [ADD SOME
-% CITATIONS HERE]
+\AN{Since the originating bank is usually also the bank servicing the mortgage 
+(and hence actively participating in the foreclosure auction, I deleted the following paragraph. See 
+\url{http://www.newyorkfed.org/research/epr/2012/EPRvol18n2.pdf#page=50} 
+ and
+\url{http://www.imf.org/external/pubs/ft/fandd/2008/09/pdf/basics.pdf}. Also see 
+\url{https://www.usbank.com/pdf/community/Role-of-Trustee-Sept2013.pdf}, which describes that
+the name of the trustee usually shows up in the legal documents, but the foreclosure is actually
+initiated by the servicer.}
+\begin{comment}
+In addition, some of the information that would be available to the originating bank may be unavailable to the bank servicing the securitized mortgage. This information includes possible renovations implemented by the owner and financed by the originating bank through the home equity line of credit. It may also include other information correlated with the house upkeep such as the current employment and income status of the borrower. 
+\end{comment}
 
-% We can divide the foreclosure auctions into those related to a
-% securitized mortgage and those related to a non-securitized
-% mortgage.
 One would therefore expect the bank to have less private information
 about the quality of the house for securitized mortgages than for
 non-securitized mortgages. This implies that the non-monotonicity and
@@ -425,19 +419,24 @@ bank's bid should be present for non-securitized mortgages, but not
 for securitized mortgages (or at least only present to a smaller
 extent). An analysis of the data reveals that this is indeed the case.
 
-We provide further evidence for banks having less of an informational
-advantage for securitized than for non-securitized mortgages by
+We provide further evidence for banks having less information for securitized than for non-securitized mortgages by
 considering bank's bidding strategies. Because of the signalling
-premium, a bank bids higher under asymmetric than under symmetric
-information given the same opportunity cost of selling.\footnote{We
-  show for a linear utility specification of our theory a stronger
+premium, a bank bids higher under asymmetric information given the same opportunity cost of selling.\footnote{In a linear utility specification, we
+  show a stronger
   result: the bank's bid increases with the degree of informational
-  asymmetry. In the linear utility specification, a parameter $\alpha$
-  is the weight of the bank's signal in the utility of a third party
-  bidder. $\alpha=0$ means independent private values, an increase of
+  asymmetry. In the linear model, a parameter $\alpha$
+  is the weight of the bank's signal in the broker's utility. $\alpha=0$ implies independent private values, and an increase in
   $\alpha$ can be interpreted as an increase of informational
   asymmetry. Our result is that the bank's bid increases with
-  $\alpha$.} In order to estimate banks' bidding strategies for
+  $\alpha$.}\AN{I don't think that the text of this footnote belongs into the introduction.
+  With asymmetric info, banks bid more than with symmetric info.
+  One would expect that monotonicity should hold: for intermediate levels
+  of asymmetric info, banks submit intermediate bids. While it's nice
+  that we managed to prove this for linear specifications, I don't think
+  it's particularly exciting. And I don't think that an applied audience
+  will care about a parameter $\alpha$, at least not in the introduction.}
+  
+  In order to estimate banks' bidding strategies for
 securitized and non-securitized mortgages and to correct for possible
 selection effects,\footnote{A different distribution of banks' bids
   for securitized and non-securitized mortgages could be either due to
@@ -446,112 +445,15 @@ selection effects,\footnote{A different distribution of banks' bids
   non-securitized mortgages.} we collected additional data on the
 resale prices and the tax assessment values of foreclosed
 properties. These two additional variables allow us to deal with the
-selection effect while taking care of unobserved heterogeneity. This
+selection effect while simultaneously controlling for unobserved heterogeneity. This
 allows us to estimate banks' bidding functions for securitized and
 non-securitized mortgages. We show that for a given opportunity cost,
 a bank holding a non-securitized mortgage bids more than a bank
 holding a securitized mortgage. This provides additional evidence for
 different levels of asymmetric information at the foreclosure stage
-and hence moral hazard at the stage of granting mortgages.
-
-% Next, we consider a version of our model where the broker's
-% valuation depends on the bank's information \emph{linearly}, with
-% coefficient $\alpha$ measuring the degree of bank's
-% informativeness. A higher $\alpha$ corresponds to more precise
-% information concerning the common value component. We show that the
-% bank will bid more aggressively if $\alpha$ is higher. This is
-% \emph{both} because of the direct effect on the broker values, and
-% the indirect effect due to the higher incentive to signal the
-% favourable information to the brokers.
-%
-% We provide direct evidence that asymmetric information plays a
-% bigger role for the foreclosure auctions of non-securitized by
-% showing that the signalling premium is larger.  In order to be able
-% to estimate the bank's bidding strategy, we collected additional
-% data on the resale prices and the tax assessment values of
-% foreclosed properties. Using the resale price and the assessment
-% value as two independent noisy signals for banks' valuations, we
-% constructed the distribution of banks' valuations for securitized
-% and non-securitized mortgages. Matching the quantiles of banks'
-% valuation distributions with banks' bid distributions gives us the
-% (average) bidding function. Having an estimate of the bidding
-% function for both securitized and non-securitized mortgages, we show
-% that for a given valuation, a bank holding a non-securitized
-% mortgage bids more than a bank holding a securitized mortgage. This
-% is consistent with asymmetric information being more salient for
-% non-securitized mortgages.
-
-% This information asymmetry has potentially important implications
-% for securitization policies. As we explain, these policies have
-% traditionally focused on the probability of default, in particular
-% as measured by the borrower's FICO score. However, the total cost of
-% a defaulted mortgage will also include the loss given default. The
-% latter is determined by the value of the house recovered in the
-% foreclosure auction. It is this total loss that gets insured by the
-% US federal mortgage agencies, with the cost ultimately borne by the
-% taxpayer. We find that (i) the bidding behavior of the lenders is
-% consistent with the hypothesis that they are likely to be better
-% informed when the mortgage is not securitized, and (ii) the recovery
-% ratio is substantially lower in the pool of the securitized
-% mortgages. Taken together, these findings suggest that some of the
-% original lender's informational advantage concerning the recovery
-% value of the mortgage is already present at the securitization
-% stage. This information is likely to be private, leading to a
-% previously unrecognized dimension of adverse selection at the
-% securitization stage.
-
-% The first finding is important because it indicates that the banks
-% are likely to have \emph{private} information concerning the loss
-% given default already at the securitization stage, effectively
-% transferring this loss to the taxpayers. The second finding is
-% important because it indicates that this information is likely to be
-% privately known by the bank. This points towards a potentially
-% important and previously unrecognized market failure at the
-% securitization stage, and the potential need for a policy response
-% to address it.
+and is consistent with moral hazard at the mortgage underwriting stage.
 
 
-% There is also a generally held suspicion that lower quality
-% mortgages are securitized and sold on the market, despite the fact
-% that securitization agencies screen based on publicly observable
-% characteristics. The suspicion is that securitized mortgages are
-% worse with respect to characteristics which cannot be observed
-% publicly. However, it is in the nature of characteristics that
-% cannot be publicly observed that it is difficult to make empirical
-% statements concerning them. With our theory giving clear predictions
-% on what one should observe with and without a common value
-% component, we can look in more detail at the question whether for
-% non-securitized mortgages banks indeed have private information of
-% the quality of the house. The data for securitized mortgages seems
-% to be more consistent with an independent private values setup,
-% whereas for non-securitized mortgages, it is more consistent with
-% there being a common value component for one part of the auctions.
-
-%
-% What are the welfare implications of common values and the
-% associated adverse selection in foreclosure auctions? Building on
-% the insights in \cite{cai2007reserve}, \cite{jullien2006auction} and
-% \cite{lamy}, we show that seller bids in the foreclosure auction
-% under common values involve a \emph{signalling premium} for bids
-% below the judgment amount. That is, they are higher relative to what
-% they would have been if the realtors knew the bank's
-% information. This introduces a further distortion, on top of the
-% usual deadweight loss stemming from the bank's monopoly position as
-% the seller. Fro the bids above the judgment amount, on the other
-% hand, there is no distortion, as the bank will act as a buyer, and
-% the English auction will allocate the house efficiently.
-
-
-%
-%
-%
-% Under the assumption that for non-judicial foreclosures the same
-% buyers with the same valuations participate in an auction, we can
-% make a welfare comparison between judicial and non-judicial
-% foreclosures. Under an independent private values setup, judicial
-% foreclosures generate higher welfare than non-judicial
-% foreclosures. A comparison in a common values setup is work in
-% progress.
 %
 \paragraph{Related Literature.} To the best of our knowledge, this is
 the first paper providing an economic analysis of the bidding behavior
@@ -559,7 +461,7 @@ in foreclosure auctions. So far, the details of foreclosure auctions
 have been mainly analyzed in the law literature (see
 e.g. \cite{nelson2004reforming}).
 
-For our theoretical analysis, we build on two strains of
+For our theoretical analysis, we build on two strands of
 literature. The first analyzes bidding behavior of buyers with
 information about a common value component, starting with
 \cite{milgrom1982theory}. The second, more recent, literature analyzes
@@ -573,15 +475,16 @@ there are surprising predictions for the intermediate range of bids,
 which are between the informed seller and the informed buyer regions.
 
 To the best of our knowledge, this is also the first paper to provide
-empirical evidence for a common value component \emph{on the seller's
+empirical evidence for a common value component on the \emph{seller's
   side} in an auction. In this sense, it complements the existing
-empirical auction literature, which has focused on a common value
+empirical auction literature, which has considered testable predictions for models with a common value
 component on the \emph{buyer's side}, see
 \cite{hendricks1988empirical} and \cite{hendricks2003empirical} for
 offshore oil auctions, and \cite{nyborg2002bidder} and
 \cite{hortaccsu2012valuing} for treasury auctions.
 
-Our setup makes it particularly easy to find a common value component
+Foreclosure auctions are particularly well suited to analyze the presence of
+a common value component
 on the seller's side. This is because (i) participation in the sales
 is required by law and (ii) the seller is a private
 organization. Without (i) (i.e. with voluntary participation)
@@ -597,7 +500,7 @@ asymmetric information.\footnote{It is plausible that one cannot
 governments are less likely to have superior information. Much of the
 literature has analyzed markets in which either (i) or (ii) was not
 satisfied, hence even if one had looked for a common value component on
-seller's side rather than the buyer's side, it would have been difficult 
+the seller's side rather than on the buyer's side, it would have been difficult 
 to find it.
 
 % Evidence of strategic behavior and asymmetric information has long
@@ -617,11 +520,10 @@ to find it.
 
 The application of our theory to securitization relates to the
 literature dealing with moral hazard, such as \cite{mian2009consequences}, \cite{keys2008did},
-\cite{tirole2011illiquidity}. Our analysis provides
-further evidence that securitization led to moral hazard. Our analysis
+\cite{tirole2011illiquidity}. Our analysis is consistent with the view that securitization led to moral hazard. Our analysis
 is complementary to the analysis in the existing literature that
 provides evidence for moral hazard with respect to the probability of
-default. Our analysis shows moral hazard with respect to the other
+default. Our analysis highlights the importance of moral hazard with respect to the other
 determinant of the expected shortfall of a mortgage: the loss given
 default (which is determined by the value of the mortgage collateral).
 
@@ -629,91 +531,107 @@ In a wider sense, our article relates to the growing literature that
 uses insights from auctions to analyze important questions in
 financial markets, such as \cite{heller1998auctions},
 \cite{hortacsu2010mechanism}, \cite{cassola20132007},
-\cite{zulehner2013competition}, albeit for the analysis of
-mortgages rather than treasury bills.
+\cite{zulehner2013competition}, where our novelty is to apply it to mortgages.
 
 
 \section{Foreclosure Process}
+
+\AN{I suggest we move most of the following to the appendix. The reader doesn't
+need to know the steps leading to foreclosure or the distinction between
+judicial and non-judicial foreclosures to understand what we are doing in this
+paper. We should describe the bidding procedure instead.}
 Property foreclosure is a remedy allowed by law to the lender if the
 borrower defaults on the mortgage. While it generally transfers the
 ownership of the property to the lender, the process may be a lengthy
 one and the details depend on the jurisdiction. In the US, roughly
 $40\%$ of the states adopt what is called a \emph{judicial}
 foreclosure, while the rest is comprised of the \emph{nonjudicial}
-foreclosure states. See Figure \ref{fig:judicial}.\footnote{This and
-  other information concerning judicial and nonjudicial foreclosures
-  can be found in \cite{nelson2004reforming}.}
-
-
+foreclosure states.\footnote{This and
+ other information concerning judicial and nonjudicial foreclosures
+ can be found in \cite{nelson2004reforming}.} In the following, we will
+ restrict our attention to judicial foreclosures, since we are using a
+ data set from a state with this foreclosure system (Florida).\footnote{
 The main legal difference between judicial and nonjudicial foreclosure
 is that in the former, the process takes place in the court system,
 while in the latter, it takes place outside the courts. Judicial
 foreclosures always result in the property being sold at a public
-auction, while the nonjudicial foreclosure usually involves a sale of
-the property by the trustee under the power of sale clause. The
-trustee sale may or may not be conducted through auction, but still
-have to generally comply with various state laws, even though it is
-performed outside of the court system.\footnote{A handful of states
-  (Connecticut, Maine and Vermont) allow for a \emph{strict
-    foreclosure}, where the property title is transferred to the
-  lender immediately after the default.}
+auction, \emph{the foreclosure auction}. 
+% while the nonjudicial foreclosure usually involves a sale of
+% the property by the trustee under the power of sale clause. The
+% trustee sale may or may not be conducted through auction, but still
+% have to generally comply with various state laws, even though it is
+% performed outside of the court system.\footnote{A handful of states
+%   (Connecticut, Maine and Vermont) allow for a \emph{strict
+%     foreclosure}, where the property title is transferred to the
+%   lender immediately after the default.}
+% In this paper, we focus on judicial foreclosures. In our empirical
+% application, we study foreclosure auctions in a judicial state
+% (Florida). 
+}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics{graphics/foreclosure_map}
-  \caption{States with judicial and non-judicial foreclosures}
-  \label{fig:judicial}
-\end{figure}
+When the borrower defaults on a mortgage, the court grants the lender a judgment of foreclosure.
+% %  \footnote{The steps below are described in relative detail
+% %  at e.g.\ \url{www.nolo.com}.} 
+% \AN{I removed the reference to nolo.com. If the best reference we can come up with is
+% a website, I'd rather provide no reference at all. But I think \cite{nelson2004reforming}
+% provides enough info (and is published in the Duke Law Review rather than on a website.)}
+%   The lender then informs the borrower that it intends to begin the foreclosure process, giving the borrower a final deadline to make up the mortgage payments. If the borrower dos not make the payments, the lender proceeds to file
+%   a lawsuit, usually in the county where the property is located. The
+%   complaint is served to the mortgagee, usually by the county
+%   sheriff. At this point, the mortgagee becomes a defendant in the
+%   foreclosure lawsuit. The defendant is given a certain amount of time, usually 20 - 30
+%   days, to respond. The defendant does not have to respond. The
+%   defendant may choose to respond if he or she is able to raise a
+%   substantive complaint, e.g.\ concerning the ownership of the
+%   mortgage or unfair lending practices. If the complaint goes uncontested or the defendant does not
+%   raise a substantive complaint, the lender is granted a judgment of
+%   foreclosure. 
+The judgment will specify the date of the foreclosure
+  sale. The judgment holder is often required to advertise  the sale in a local newspaper. The title is transferred to the highest bidder as is, and certain liens and encumbrances may survive the foreclosure sale. Finding out this information is the sole responsibility of the prospective buyers.
+  
+Unlike in a regular real estate sale, in a foreclosure sale the bank is not allowed to run an open house, or provide individual access to prospective buyers. The reason for this is that until the sale is complete, any access to the property usually needs owner permission. The owner, however, may have little incentive to cooperate with the foreclosing lender, or may even have abandoned the property.  
 
-In this paper, we focus on judicial foreclosures. In our empirical
-application, we study foreclosure auctions in a judicial state
-(Florida). The judicial foreclosure process generally consists of the
-following steps.\footnote{These steps are described in relative detail
-  at e.g.\ \url{www.nolo.com}.}
 
-\begin{enumerate}
-\item The mortgage holder misses several payments on the mortgage. In
-  some states, the lender is allowed to start the foreclosure process
-  after the borrower has missed one payment. In practice, however, the
-  process usually begins after three payments have been missed.
-\item The lender informs the mortgage holder, usually through a letter
-  of intent with a specified deadline, that it intends to begin the
-  foreclosure process. This notice of intent, or ``breach letter",
-  allows the borrower to make up the missed payments before the
-  deadline. The deadline is usually set at 30 days.
-\item If the mortgage is still delinquent, the lender proceeds to file
-  a lawsuit, usually in the county where the property is located. The
-  complaint is served to the mortgagee, usually by the county
-  sheriff. At this point, the mortgagee becomes a defendant in the
-  foreclosure lawsuit.
-\item The defendant is given a certain amount of time, usually 20 - 30
-  days, to respond. The defendant does not have to respond. The
-  defendant may choose to respond if he or she is able to raise a
-  substantive complaint, e.g.\ concerning the ownership of the
-  mortgage or unfair lending practices.
-\item If the complaint goes uncontested or the defendant does not
-  raise a substantive complaint, the lender is granted a judgment of
-  foreclosure. The judgment will specify the date of the foreclosure
-  sale. The sale is conducted through a public auction. The bank is
-  allowed to credit bid up to the debt amount (also called the
+
+
+The sale is conducted through a public auction.  The bank is an active participant and is 
+  allowed to credit bid\AN{Art, what is "credit bid"? And do we need to mention this?} up to the amount owed (also called the
   judgment amount), while other participants (usually real estate
-  brokers) are required to submit bids in cash or cash equivalent. The
+  brokers) are required to submit bids in cash or cash equivalent.\footnote{The bidders are often required to make an advance deposit as a certain percentage of the judgment amount. This deposit will be credited towards the bid should the bidder win the auction.}
+  The
   auction is usually conducted in an open format. Some counties have
   adopted Internet auctions.\footnote{This is the case for Palm Beach
     county in Florida, the source of the data for the empirical
     application in our paper.} The property title is awarded to the
   highest bidder, and the auction price is equal to the highest
-  bid. If the lender is \emph{not} the highest bidder, the lender
-  receives the payment equal to the minimum of the auction price and
-  the judgment amount. If the sale price exceeds the judgment amount,
-  the surplus is used to satisfy the junior liens, if any. The
-  remaining surplus is paid to the defendant.\label{enum:auction}
-\end{enumerate}
+  bid. The proceedings of the auction are collected by the court. The court transfers
+  any payments up to the judgment amount to the lender. In case the auction price
+  exceeds the judgment amount, the additional proceedings are paid to junior liens
+  holders and to the owner of the property.%
+%   If the lender is \emph{not} the highest bidder, the lender
+%   receives the payment equal to the minimum of the auction price and
+%   the judgment amount. If the sale price exceeds the judgment amount,
+%   the surplus is used to satisfy the junior liens, if any. The
+%   remaining surplus is paid to the defendant.
+\footnote{If the broker wins the auction but the sale price falls short of the judgment amount, the lender can
+then ask the court for a deficiency judgment, to be applied against the borrower's other assets. Deficiency
+judgments are relatively rare, as they are only pursued when the borrower owns other significant assets. But in 
+that case, absent a sudden crash of the real estate market, the borrower is better off selling these assets and 
+avoiding a costly foreclosure that is likely to reduce the borrower's credit rating.}
+ \PX{whether identity is revealed along the way? how do brokers know whether they are competing with bank or 
+ another broker? any other details on auction relevant? }\AN{The name of the currently leading
+ bidder is shown in the web interface. So brokers see whether the plaintiff 
+ is the currently leadig bidder. 
+ Assuming that the bank submits its maximum bid at the very 
+ beginning and never updates it, a broker sees whether the bank has dropped out already.
+ This of course does not cover the case in which the bank exits and then reenters
+ the auction, but we don't want to deal with that. For more details, see
+ \url{https://mypalmbeachclerk.clerkauction.com/static/how_to.pdf}}
 
+\AN{add details of internet auction in Palm Beach County here (initial max bid by plaintiff,
+brokers see identity of plaintiff, etc.}
 
-
-In the next section, we present a stylized model of the terminal stage
-of the foreclosure process, the foreclosure auction.
+In the next section, we present a stylized model of the foreclosure auction that captures the main institutional details. First, the payment to the lender in the auction is capped at the judgment amount. As we show, this will result in a differential role of the lender, effectively making it a seller of the property if the bid is lower than the judgment amount, and a buyer otherwise. Second, the bank will have private information about the quality of the house. This information is also relevant to the brokers, but their valuations also depend on other  idiosyncratic factors.
 
 
 \section{Model}
@@ -762,8 +680,8 @@ mostly sell the houses later on. Brokers typically renovate the
 property before reselling. Motivated by this, we make the following
 assumption concerning the information of the bank and the
 brokers. First, we assume that the $i$th broker's idiosyncratic
-signal, denoted as $X_B^i$, only concerns its renovation value added
-to the house. Second, we assume that the bank's signal $X_S$ concerns
+signal, denoted as $X_B^i\in \mathds R_{+}$, only concerns its renovation value added
+to the house. Second, we assume that the bank's signal $X_S\in \mathds R_{+}$ concerns
 the baseline resale value of the house. The signals $X_B^i$ and $X_S$
 will be sometimes referred to as buyers' and seller's
 \emph{types}. Their realizations will be denoted as $x_B^i$ and $x_S$,
@@ -807,10 +725,10 @@ of the brokers.
   increasing in own signal $x_B$, and nondecreasing in the bank's
   signal $x_S$,
   \begin{align}
-    \frac{\partial u_B(x_B,x_S)}{\partial x_B}\geq \alpha,\quad
+    \frac{\partial u_B(x_B,x_S)}{\partial x_B}\geq \theta,\quad
     \frac{\partial u_B(x_B,x_S)}{\partial x_S} \geq 0, \nonumber
   \end{align}
-  for some constant $\alpha>0$.  Moreover, the derivatives satisfy the
+  for some constant $\theta>0$.  Moreover, the derivatives satisfy the
   \emph{single crossing} condition
   \begin{align}
     \frac{\partial u_B(x_B,x_S)}{\partial x_B}>\frac{\partial
@@ -842,9 +760,15 @@ to the signal,
   u_B(x_B,x_B) = x_B.
   \label{bnorm}
 \end{align}
-This normalization is without loss of generality because Assumption
-\ref{as:valuations} ensures that $u_B(x_B,x_B)$ is continuous and
-strictly increasing in $x_B$.
+This normalization is without loss of generality because Assumption~\ref{as:valuations} 
+ensures that $u_B(x_B,x_B)$ is continuous and
+strictly increasing in $x_B$.\footnote{To see that the normalization is
+indeed without loss of generality, consider the general case
+$u_B(x_B,x_B)=v(x_B)$ for some function $v$. We can define the transformed signal
+$\tilde x_B=v(x_B)$ and the transformed utility function 
+$\tilde u_B(\tilde x_B,x_S)=u_B(v^{-1}(\tilde x_B),v^{-1}(x_S))$. Then, for the transformed
+utility function and signal, the normalization holds: 
+$\tilde u_B(\tilde x_B,\tilde x_B)=\tilde x_B$.}
 
 We make the following assumptions regarding the distribution of the
 signals.
@@ -900,7 +824,7 @@ believe that the informativeness of the bank's signal about the
 quality of the house is different for securitized and non-securitized
 mortgages.
 
-\section{Symmetric information}
+\section{Symmetric Information}
 \label{sec:indep-priv-valu}
 
 It is useful to first start with the case of \emph{symmetric
@@ -914,8 +838,9 @@ as a seller and above which the bank acts as a buyer.
 % \frac{1-F_{B}(x_B)}{f_{B}(x_B)}. \]
 Standard arguments imply that it is a weakly dominant strategy for the
 broker to choose its valuation as the drop out price, so
-\[p_B(x_B) = x_B.
+\[p_B(x_B) = u_B(x_B,x_S).
 \]
+
 % \begin{remark}
 %   If buyer signals are independent, or, by convention, if there is
 %   only one buyer, $J_B(\cdot)$ becomes the standard Myerson virtual
@@ -946,15 +871,16 @@ i.e. $u_B(x_{(2)},x_S)$. Denote as $\hat x_B$ the broker's type
 indifferent between staying in or dropping out at $p$, so that $p =
 u_B(\hat x_B, x_S)$. Then the bank's expected profit is equal to
 \[ \Pi_S(x_S, \hat x_B) = u_B(\hat x_B,x_S) n F_B(\hat x_B)^{n-1}
-(1-F_B(\hat x_B)) +\int_{\hat x_B}^\infty u_B(y,x_S) f_{(1)}(y) dy
+(1-F_B(\hat x_B)) +\int_{\hat x_B}^\infty u_B(y,x_S) f_{(2)}(y) dy
 +x_S F_B(\hat x_B)^n.
 \]
+
 (If there is only one broker, $n=1$, then the integral term should be
 excluded from the above formula.) The bank will choose the price, or,
 equivalently, the broker's marginal cutoff $\hat x_B$, optimally. The
-derivative of $\Pi (x_S,,\hat x_B)$ with respect to $\hat x_B$ is
+derivative of $\Pi_S (x_S,,\hat x_B)$ with respect to $\hat x_B$ is
 equal to
-\[ \frac{\partial \Pi (x_S,\hat x_B)}{\partial \hat x_B} = -nf_B(\hat
+\[ \frac{\partial \Pi_S (x_S,\hat x_B)}{\partial \hat x_B} = -nf_B(\hat
 x_B) F_B(\hat x_B)^{n-1} \Big ( J_B(\hat x_B,x_S) - x_S \Big)
 \]
 for any $n\geq 1$. Assumption \ref{as:myerson} implies that $\Pi (\hat
@@ -1019,33 +945,40 @@ We summarize these findings in the proposition below. Refer to Figure
     x_S, & \text{if $x_S > v_J$}
   \end{cases}
   \]
+where $x_B^*(x_S)$ is uniquely determined from $J_B(x_B^*(x_S),x_S) = x_S$.   
   The optimal strategy is strictly increasing in $x_S$ provided
   \eqref{eq:cond1} or \eqref{eq:cond2} hold, in which case the bank's
   prices are pooled over an interval $[\underline x_S, v_J]$.
 \end{proposition}
- 
+
+%  \PX{For the illustrated example to work in Figure 1, two conditions are required: 
+%  \begin{itemize}
+%  \item $p^0_S(x_S)$ has to be above 45-degree line (i.e., bid higher than $x_S$)
+%  \item $x_S<v_J$, i.e., $p^0_S$ hits $v_J$ level before $x_S$ does. 
+%  \end{itemize}
+%  What guarantees the sufficiency of these two? In particular, equation (6) asks slope to be less than 1. It is not clear here yet. }\AS{it is above the 45 degree line because there is a markup.}
+%  \AN{Steven, I have adjusted the caption of Figure~\ref{prop:syminfo} to clarify this. Let me know whether you think we should explain this in more detail. I'm fine with these changes, if there are no disagreements,
+%  we can remove these comments.}
 %
 % With these preliminaries, the bank's dropout strategy is
 % characterized in the proposition below.
 \begin{figure}[t]
   \centering
   \includegraphics[scale=0.55]{graphics/equilibrium.pdf}
-  \caption{Equilibrium under IPV\label{fig:equilibrium}}
+  \caption{The bank's bidding strategy $p_S(x_S)$ under independent private values. For $x_S<\ul x_S$ the bank bids its valuation $x_S$ plus a markup, for $x_S>v_J$ the bank bids its valuation. The bids of banks with $x_S\in [\ul x_S,v_J]$ are bunched at $v_J$.\label{fig:equilibrium}}
 \end{figure}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[scale = 0.5]{graphics/model_equilibrium}
-  \caption{Computed equilibrium bid distributions for the bank
-    ($G_S(\cdot)$; solid curve) and the broker ($G_B(\cdot)$; dashed
-    curve). It is assumed $u_B(x_B,x_S) = x_B$, and the value
-    distributions are specified as normal, with equal means $\mu_S =
-    \mu_B = 0.4$ and standard deviation $\sigma_S = \sigma_R =
-    0.6$. The judgment amount is $v_J=1$. Observe the mass point at
-    the judgment amount in $G_S(\cdot)$.\AN{It's probably better to
-      only plot the bank's bid
-      distribution.}\label{fig:model_equilibrium}}
-\end{figure}
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[scale = 0.5]{graphics/model_equilibrium}
+%   \caption{Computed equilibrium bid distributions for the bank
+%     ($G_S(\cdot)$; solid curve) and the broker ($G_B(\cdot)$; dashed
+%     curve). It is assumed $u_B(x_B,x_S) = x_B$, and the value
+%     distributions are specified as normal, with equal means $\mu_S =
+%     \mu_B = 0.4$ and standard deviation $\sigma_S = \sigma_R =
+%     0.6$. The judgment amount is $v_J=1$. Observe the mass point at
+%     the judgment amount in $G_S(\cdot)$.\PX{We can probably remove this graph from the main text. The value added by this graph is very limited, given Figure 1 has already done the job illustrating bunching. }\AN{I agree, we should remove this figure.}}\label{fig:model_equilibrium}
+% \end{figure}
 
 \paragraph{Discussion} The bank's equilibrium behavior is different
 depending on whether the bank's valuation is below or above the
@@ -1060,7 +993,7 @@ at the judgment amount. Consider comparative statics with respect to
 the banks valuation $x_S$. For low valuations $x_S$, the bank bids its
 valuation plus the monopoly markup. The optimal bid of the bank
 balances two effects in a trade-off: a higher bid increases the bank's
-expected profits conditional on selling, but also lowers the
+expected profits conditional on sale, but also lowers the
 probability of selling the house to a third party. As we increase
 $x_S$, this trade-off changes in a way that makes higher bids more
 attractive to the bank. Hence, the banks bid increases with
@@ -1087,11 +1020,11 @@ $x_S$ above $v_J$.
 % This bunching will cause a \emph{mass point} at $v_J$ in the
 % distribution of the bank's dropout prices.
 This flat piece in the bank's bidding function corresponds to a mass
-point in banks' bid distributions.  Figure~\ref{fig:model_equilibrium}
-illustrates this in an example with normal distributions.
+% point in banks' bid distributions.  Figure~\ref{fig:model_equilibrium}
+% illustrates this in an example with normal distributions.
 
  
-\section{Asymmetric information}
+\section{Asymmetric Information}
 \label{sec:asymmetric-information}
 
 We now consider the general environment with common values, where the
@@ -1108,7 +1041,7 @@ types, and as a buyer for higher types. Again, we begin by considering
 the extreme cases $v_J = 0$, where the bank always acts as a buyer,
 and $v_J = \infty$, when the bank always acts as a seller.
 
-\subsection{Bank-buyer equilibrium ($v_J = 0$)}
+\subsection{Bank-buyer Equilibrium ($v_J = 0$)}
 \label{sec:vj0}
 
 If $v_J=0$, both the bank and the brokers act as buyers, bidding in a
@@ -1136,12 +1069,12 @@ out at the price equal to its type. This equilibrium is described in
 the proposition below.
 
 \begin{proposition}[Bank-buyer equilibrium] 
-  In a realtor-symmetric equilibrium, both the bank and the brokers
+  In a broker-symmetric equilibrium, both the bank and the brokers
   will drop out at the prices equal to their signals, \[ p_S(x_S) =
   x_S, \quad \quad p_B(x_B) = x_B. \]
 \end{proposition}
 
-\subsection{Bank-seller equilibrium ($v_J = \infty$)}
+\subsection{Bank-seller Equilibrium ($v_J = \infty$)}
 
 \label{sec:comm-value-comp}
 
@@ -1170,7 +1103,7 @@ increasing, continuous and differentiable strategies.
 % In the sequel, we shall refer to this equilibrium as an
 % \emph{unconstrained} equilibrium.  In the foreclosure auction, the
 % bank's revenue is constrained not to exceed the judgment amount.  In
-% our dataset, there are some auctions with a public reserve. But in
+% our data set, there are some auctions with a public reserve. But in
 % the majority of the auctions, the bank is an active participant. In
 % other words, the bank bids just like any other bidder.
 We begin by adapting the equilibrium characterization results in the
@@ -1278,9 +1211,9 @@ comparison with the symmetric information setup considered in Section
 \ref{sec:indep-priv-valu}, the \emph{signalling premium}.
 \begin{corollary}[Signalling premium]\label{cor:sp}
   Under asymmetric information, the bank bids higher, $p_S^*(x_S) >
-  p_S^0(x_S)$ for $x_S>0$.
+  p_S^0(x_S)$ for $x_S>0$. The probability of sale to the broker as a function of the seller's
+  price is \emph{lower} under asymmetric information than under symmetric information.
 \end{corollary}
-
 \begin{proof} Our previous analysis in that section implies that the
   bank with valuation $x_S$ will set the price so that the marginal
   broker type willing to purchase at this price, $X_B^0(p)$, is found
@@ -1298,8 +1231,14 @@ comparison with the symmetric information setup considered in Section
   $u_B(X_B^0(p),X_S^0(p)) = p$ and $u_B(X_B^*(p),X_S^*(p)) = p$, with
   $u_B(x_B,x_S)$ being monotone increasing in both arguments (under
   common values), we must have \[ X_S^*(p)<X_S^0(p) \implies
-  p_S^*(x_S) > p_S^0(x_S)\] for $x_S>0$. \end{proof}
-
+  p_S^*(x_S) > p_S^0(x_S)\] for $x_S>0$. Finally, to show that the probability of sale is lower under asymmetric information, note that
+  \begin{align*}
+  u_B(X_B^*(p),X_S^*(p))=p,\quad u_B(X_B^0(p),X_S^0(p))=p,
+  \\
+ X_S^*(p)<X_S^0(p) \implies X_B^*(p)>X_B^0(p).
+  \end{align*} 
+  Since the probabilities of sale under asymmetric and symmetric information are given by $ 1-F_{(1)}(X_B^*(p))$ and $ 1 - F_{(1)}(X_B^0(p))$ respectively, we see that the latter is higher than the former. 
+  \end{proof}
 
 
 The signalling premium leads to welfare losses under asymmetric
@@ -1310,7 +1249,8 @@ to the buyer with valuation $x_B$ if and only if $x_B>x_S$. Denote as
 $x_B(x_S)$ the minimal buyer type that will, in equilibrium, trade
 with the seller with valuation $x_S$. It is found from
 $u_B(x_B(x_S),x_S) = p(x_S)$. Under asymmetric information, this type
-is determined from $u_B(x_B^*(x_S),x_S) = p_S^*(x_S)$, while under
+is determined from $u_B(x_B^*(x_S),x_S) = p_S^*(x_S)$,\PX{this relation is not obvious for asym eqm. at least, when characterising eqm, it was not shown.}\AN{explain this earlier
+and say something about separating equilibrium} while under
 symmetric information, it is determined from $u_B(x_B^0(x_S),x_S) =
 p_S^0(x_S)$. Since $p_S^*(x_S)>p_S^0(x_S)$ due to the signalling
 premium, we must have \[ x_B^*(x_S)>x_B^0(x_S)>x_S .\] Thus, the
@@ -1334,17 +1274,31 @@ values. Note that this is different from the symmetric information
 case considered above since now the bank's information becomes
 irrelevant rather than being revealed to the brokers. We denote the
 bank's strategy $p_S(x_S;\alpha)$.
-\begin{proposition}[The effect of $\alpha$]\label{prop:slope}
-  In the linear model, $p_S(x_S;\alpha)$ is increasing in $\alpha$.
+% \AN{We should provide a closed form solution for $p_S$ here (or at least
+% something close to a closed form solution, like the inverse bidding function).}\AS{I added the solution in the proposition below.}
+\begin{proposition}[Equilibrium of the linear model]\label{prop:slope}The bank's strategy in the linear model is given by 
+\[ p_S^*(x_S;\alpha) = s^{-\mathbbm 1}(x_S)+\alpha x_S, \]
+where 
+  \begin{align*}
+    s(x_B) = \frac{1}{\alpha}( 1-F_{(1)}(x_B))^{\frac{1}{\alpha} - 1} \int_{\underline
+      x_B}^{x_B} (1- F_{(1)}(t))^{-\frac{1}{\alpha}} f_{(1)}(t)\left (t-\frac{1-F_B(t)}{f_B(t)}\right )dt
+  \end{align*}
+  is the maximal bank's type that trades with a broker of type $x_B$, and $\ul x_B$, the lowest
+  broker participating type, is the same as under symmetric
+  information, i.e. given implicitly by
+  \[
+  \ul x_B - \frac{1-F_B(\ul x_B)}{f_B(\ul x_B)} = 0.
+  \]
+  Moreover, $p_S^*(x_S;\alpha)$ is increasing in $\alpha$.
 \end{proposition}
-\begin{proof}See the Appendix
+\begin{proof}See the Appendix.
 \end{proof}
 This result shows that, as the bank's information becomes more
 relevant to the broker, the bank bids higher. In this model, $\alpha$
 affects the bank's bidding incentives through two channels. First,
 there is a direct channel since the bank's information directly
 affects the broker's payoff. Second, there is an indirect channel due
-to the signalling premium, as have discussed previously.
+to the signalling premium, as we have discussed previously.
 
 % In the linear model, the lowest bank's bid $p_S(0;\alpha)$ is equal
 % to $J^{-\mathbbm 1} (\alpha \mathbbm E x_S) - \alpha \mathbbm E
@@ -1357,13 +1311,13 @@ to the signalling premium, as have discussed previously.
 % $p_S(x_S;\alpha')$ cross at most once, with $p_S(x_S;\alpha')$
 % crossing from below.
 
-\subsection{General case: $v_J \in (0,\infty)$}
+\subsection{General Case: $v_J \in (0,\infty)$}
 
 In a foreclosure auction with $v_J\in (0,\infty)$, the equilibrium
 will combine the features of the bank-seller equilibrium for lower
 $x_S$, where the bank will drop out at $p_S^*(x_S)$ as described for
 the $v_J=\infty$ case, and bank-buyer equilibrium for higher $x_S$,
-where the bank would drop out at $p_S^*(x_S) = x_S)$. However,
+where the bank would drop out at $p_S^*(x_S) = x_S$. However,
 ``stitching" these two equilibria under common values is by no means a
 simple matter. To see the difficulties that arise, suppose we have a
 bunching equilibrium with common values where the bank types over a
@@ -1399,8 +1353,10 @@ price, but does not change the probability of selling.
 \begin{figure}[tf]
   \centering
   \includegraphics[scale = 0.6]{graphics/eqm_common.pdf}
-  \caption{Equilibrium with common values}
-  \label{fig:eqm_common}
+  \caption{Equilibrium under asymmetric information. The thick line
+  represents the bank's bidding strategy $p_S(x_S)$, the thin line
+  represents a broker's bidding strategy $p_B(x_B)$.}
+ \label{fig:eqm_common}
 \end{figure}
 
 In order to prevent such deviations, an equilibrium with bunching must
@@ -1419,11 +1375,11 @@ $v_J=\infty$ case for $x_B < x_B^*$, where $x_B^*$ is implicitly
 defined by $p_B^*(x_B^*)=\ul p_S$. Then, the types $x_B \in (x_B^*,\ol
 x_B$) will drop out as soon as the price has surpassed $\ul
 p_S$. These brokers realize that they cannot beat the bank profitably
-at any price. The types $x_B \geq \ol x_B$ will continue, and bid up
+at any higher price. The types $x_B \geq \ol x_B$ will continue, and bid up
 to their values. We must have $\ol x_B > v_J$, since otherwise the
 broker bidding slightly above $v_J$ would prefer a deviation to a bid
 slightly above $\ul p$ in order to avoid a loss due to a lower average
-quality over the bunch.
+quality over the bunch.\PX{I find the last sentence hard to understand here. Maybe to put it later, after introducing how $\bar{x}_B$ is determined.}
 
 So the bank's dropout strategy $p_S(x_S)$ and the broker's dropout
 strategy when the bank hasn't dropped out, $p_B(x_B)$, are given
@@ -1443,6 +1399,7 @@ respectively by
   \end{cases}
   \label{eq:strategies}
 \end{align}
+\PX{To understand the eqm better, is it possible to compare the strategies? for example, segment-wise how these two agents bid against each other? $p^*_S$ corresponds to $P^*_B$? $v_J$ vs. $\underline{p}_S$?}
 See Figure \ref{fig:eqm_common}, where the bank's and broker's bidding
 strategies are shown respectively by the thick and the thin
 curves.\AN{maybe change lines to dashed and solid}
@@ -1497,7 +1454,7 @@ type is $x_S$ and it bids $p$.\footnote{See the Appendix for the
 % unlike \eqref{eq:bindif0}, this equation does not depend on
 % $\gamma$.
 Our first result is a technical lemma below that shows existence of
-cutoffs $\underline x_S, \ol x_B$ that solve the the indifference
+cutoffs $\underline x_S, \ol x_B$ that solve the indifference
 conditions \eqref{eq:bindif0} and \eqref{eq:sindif0}. Note that it
 could happen that $\ul x_S = 0$, in which case the bunch extends all
 the way to the left.
@@ -1607,8 +1564,32 @@ presence or absence of a gap could serve as a test for asymmetric
 information.
 
 However, one should not expect a gap if there is unobserved
-heterogeneity with respect to information asymmetry, as one certainly
-would expect in reality. If the sales of some of the houses are
+heterogeneity with respect to informational asymmetry, as one certainly
+would expect in reality. To what extent informational asymmetries play
+a role typically depends on characteristics of the property.
+For example, empirical studies show that there is little uncertainty about the quality
+of condominiums and hence symmetric information is likely to be a good
+approximation. For single family houses (especially in poor neighborhoods), on the other
+hand, there is more uncertainty
+about quality and asymmetric information is likely to play more of a 
+role.\footnote{For example, \cite{allen1995implicit}
+find that for condominiums observable characteristics explain a large
+part of the rent (adjusted $R^2=0.911$ in a regression with the rent as the dependent
+and different property characteristics, such as the number of square feet and bathrooms,
+and central air conditioning, as independent variables). For single
+family houses observable characteristics explain a much smaller fraction of the 
+rent (adjusted $R^2=0.685$).}
+% For example, some foreclosure properties may be abandoned by the owner, and the bank may know this 
+% information. For such properties, the information asymmetry is expected to be the strongest. 
+\AN{I replaced the abandoning of properties with single family house vs condo, because (i)
+there is abundant empirical evidence for this, (ii) it is more consistent with the
+story about securitization we tell later on, i.e. as bank you get info at the point
+you grant the mortgage rather than later on.}
+Another reason for differences in asymmetric information can be that for some 
+properties, the owner is cooperating with the lender in allowing access to the 
+property, thereby making the information essentially symmetric.
+
+If the sales of some of the houses are
 characterized by asymmetric information (ASI), whereas for others the
 auction is essentially under symmetric information (SI), then the SI
 auction will fill out the gap. Here, by SI we mean the houses where
@@ -1682,14 +1663,8 @@ that all houses have the same effective $v_J$.
 \begin{figure} %[b!]
   \centering
   \includegraphics[scale=0.6]{graphics/simulated_simple_discontinuity}
-  \caption{Simulated example for the probability of sale to the
-    broker. Linear payoffs and lognormal distributions for
-    $x_B,x_S$. 50,000 random draws in a Monte Carlo
-    simulation. Probability of sale as a function of the bank's
-    maximum bid. Locally linear kernel regression with the data split
-    at $p/v_J=1$ (confidence interval: 95\%, Epanechnikov kernel and
-    rule-of-thumb (ROT) bandwidth selection, see
-    \cite{fan1996local}).}
+  \caption{Monte Carlo simulation for the probability of sale to the
+    broker with linear payoffs and lognormal distributions of signals.}
 %		
   \label{fig:theory-probability-of-sale_sim}
 \end{figure}
@@ -1707,13 +1682,35 @@ that all houses have the same effective $v_J$.
     \uparrow v_J} \rho(p_S)$, and from that point on, decreases in a
   continuous fashion.
 \end{conjecture}
-This pattern is illustrated in a simulated example in Figure
-\ref{fig:theory-probability-of-sale_sim}. In this example, it is
-assumed that the broker's payoff is linear in the signals,
-$u_B(x_B,x_S) = (1-\beta) x_B+\beta x_S$, and the signals are
-lognormally distributed. The weight $\beta$ put on the bank's
-information $x_S$ is uniformly distributed on $[0,1/2]$, with $\beta =
+
+We further illustrate the predicted pattern in Hypothesis 2 through a Monte Carlo simulation. 
+In this example, we
+assume that there is one broker in each auction. Her payoff is linear in the signals,
+$u_B(x_B,x_S) = (1-\beta) x_B+\beta x_S$. The signals are
+lognormally distributed.\AN{once we find out what parameters we used, we
+can add this back: "with a mean of ** and standard deviation ** ."}
+% \AN{Art, do you recall the $\mu$s and $\sigma$s
+% of the lognormal distributions? I think in our simulation we had one
+% broker.}\AS{no, I don't} 
+$\beta$, which is the weight on the bank's information $x_S$, represents the degree of asymmetric information. It is assumed to be uniformly distributed on $[0,1/2]$, with $\beta =
 0$ corresponding to symmetric information.
+
+% \AN{We should add a description of the estimation technique here. I used a locally linear
+% kernel regression with the rule of thumb bandwidth selection in stata \url{http://www.stata.com/manuals13/rlpoly.pdf}, as Art suggested. A locally linear
+% kernel regression has the advantage that it's better at the boundaries. Art, 
+% you know this stuff better than me and can say something better about this here.}\AS{I agree and have added the discussion.}
+
+To detect the discontinuity at $v_J$, we split the sample at $v_J$ in two subsets. The first subset contains the observations with the bank's bid below $v_J$, while in the second one contains all observations with the bank's bid above $v_J$. Then we apply a local linear regression estimator to each subset by following \cite{fan1996local}. The well-known advantage of this method is that it provides automatic correction of the boundary bias.\footnote{See, e.g., the discussion in \cite{fan1996local}, pp. 69-70.} It allows us to consistently estimate the regression curve $\rho(p)$ not only for $p<v_J$ and $p>v_J$, but also at their limits at the boundary, i.e., $\lim_{p\uparrow v_J} \rho(p)$ and $\lim_{p\downarrow v_J} \rho(p)$. 
+
+We choose the Epanechnikov kernel function and specify the bandwidth sequences by following Silverman's normal reference rule: $1.06sn^{-1/5}$ where $s$ denotes the sample standard deviations and $n$ the number of observations. The estimated probability of sale functions are plotted in Figure
+\ref{fig:theory-probability-of-sale_sim}. We took overall 50,000 random draws. The shaded region is the $95\%$ confidence interval. 
+The figure shows both a discontinuity at $v_J$ and an upward sloping probability of sale function in
+the left neighborhood of $v_J$.\AN{Let's add back the following (in a footnote) once we have it:
+"We have also tried different bandwidths by multiplying the
+reference rule by 0.5 or 1.5. Both discontinuity and up-sloping curve occur in these experiments."}
+
+
+
 
 
 
@@ -1722,8 +1719,8 @@ information $x_S$ is uniformly distributed on $[0,1/2]$, with $\beta =
 
 The Clerk \& Comptroller's auction website provides service for sales
 on the foreclosed properties in Palm Beach county, Florida, US. The
-website provides a platform for the banks (plaintiff, to whom property
-owners hold liability) and potential buyers (mosty brokers), to meet
+website provides a platform for plaintiffs (mostly banks to whom property
+owners hold liability) and third-party bidders (mostly brokers), to meet
 in this marketplace. The ClerkAuction online platform conducts
 foreclosure sales on all business days, which provides a large amount
 of data on these sales.
@@ -1745,7 +1742,7 @@ amounts.% and more importantly, the property address in the case.
 % all the winner identity, appraisal values, and next resale values.
 % In total, our data set effectively includes 2047 observations.
 
-Our dataset contains 12,788 auctions with a total judgment amount of
+Our data set contains 12,788 auctions with a total judgment amount of
 \$4.2bn. The sum of winning bids is \$0.5bn.  Table \ref{sumstat}
 reports the summary statistics for main variables.  The variable
 \textit{bank winning} indicates that 84\% of auctions under study
@@ -1767,7 +1764,7 @@ ended up having properties transferred to bank's ownership.
     % bank winning &0.83	&0.38	&0	&1\\
     % number of realtors& 2.79& 1.33& 0&11\\
     bank wins & 0.813 & 0.390 & 0 & 1 \\
-    number of third-party bidders & 1.065 & 1.362 & 0 & 14 \\
+    number of brokers & 1.065 & 1.362 & 0 & 14 \\
 
 
     &&&&\\
@@ -1798,9 +1795,7 @@ ended up having properties transferred to bank's ownership.
   \end{tabular}
 \end{table}
 
-We now turn to empirical tests of our hypotheses.
-
-Hypothesis~\ref{hyp:bunching} can be easily checked by plotting the
+We now turn to empirical tests of our hypotheses. Hypothesis~\ref{hyp:bunching} can be easily checked by plotting the
 cumulative distribution function of banks'
 bids. Figure~\ref{fig:public-reserve} shows the distribution of banks'
 maximum bids. Bunching shows up very clearly: there are roughly 4,000
@@ -1863,7 +1858,7 @@ judgment amount and drops down discontinuously at $v_J$.
 
 
 This is exactly what theory predicts in case that there is
-heterogeneity in terms of adverse selection (see
+heterogeneity in terms of asymmetric information (see
 Figures~\ref{fig:theory-probability-of-sale} and
 \ref{fig:theory-probability-of-sale_sim}).
 
@@ -1943,37 +1938,53 @@ mortgage-lending standards and the mortgage securitization pipeline
 academic literature has confirmed this view and found that mortgage
 securitization led to moral hazard and to banks excessively granting
 mortgages, which later caused a collapse of the mortgage backed
-securities market \cite{mian2009consequences,dewatripont2010balancing,keys2008did}.
+securities market \citep{mian2009consequences,dewatripont2010balancing,keys2008did}.
+See \cite{gorton2015securitization} for an overview of
+the theory and of the empirical evidence for moral hazard.
 
-Securitization involves the following steps. First, the originating
-bank grants a mortgage to the home owner. Second, in order to get
-liquidity, the originating bank sells the cash flows from a pool of
-mortgages to a securitization agency, typically one of the Government
-Sponsored Enterprises Freddie Mac or Fannie Mae. The securitization
-agency splits the pool of assets into tranches and sells the tranches
-to investors on the capital market. Third, if a mortgage defaults,
-then the trustee of the pool of mortgages will apply for a foreclosure
-at the respective court. Subsequently, the trustee of the mortgage
-pool will act as the plaintiff in the foreclosure auction.
+Securitization can take many forms. We provide a description of the basic
+procedure here that captures the basic aspects of securitization, 
+for more details see \cite{cetorelli2012role,gorton2015securitization}.
 
-Securitization agencies have chosen measures to avoid adverse
-selection. First, only mortgages can be securitized for which the
-credit score (the FICO score) of the borrower is above a
+The relevant actors in the securitization process are the originator, the issuer,
+the special purpose vehicle, the mortgage trust, and the servicer.\footnote{Additional
+actors are the underwriter, the rating agency, and the trustee. However, they are not
+relevant for our analysis and hence left out.}
+Securitization typically involves the following steps. 
+First, the \emph{originating
+bank} grants a mortgage to the home owner. Second, the \emph{issuer} pools mortgages
+and sells the pool to a \emph{special purpose vehicle}. Third, the special purpose
+vehicle transfers the assets to a \emph{trust} that is specially created for
+a particular securitization deal. Fourth, the trust issues security shares
+back by the assets in the pool, which are then bought by investors.
+Interest payments by mortgagees are collected by the \emph{servicer} and
+transferred to the investors through the trust. Fifth, if a mortgagee
+defaults, the servicer sues for foreclosure on behalf of the trust.\footnote{Court documents
+show the trustee of the mortgage trust as the plaintiff in the foreclosure auction.
+However, the servicer acts as plaintiff on behalf of the trust.} Proceedings
+from the foreclosure are collected by the servicer and transferred
+to investors through the trust. The originating bank typically also acts
+as issuer and servicer.
+
+To avoid adverse selection, several measure are usually taken. 
+First, only mortgages can be securitized for which the
+credit score (the FICO score)\AN{say observable characteristics in general,
+typically credit score} of the borrower is above a
 threshold.\footnote{This is a somewhat simplified account, since
   securitization agencies chose two cutoffs for FICO scores: above a
   FICO score of 620, banks can securitize \emph{low documentation
     mortgages}, below a score of 600, it is very difficult to
   securitize mortgages. Between 600 and 620, banks can securitize
   mortgages, but have to provide full documentation.}  Second, the
-originating bank has to offer all properties with similar observable
-characteristics eligible for securitization and the agency randomly
-picks the mortgages to be securitized. See \cite{keys2008did} for more
-details of the securitization process.
+originating bank has offers all properties with similar observable
+characteristics eligible for securitization and the special purpose
+vehicles randomly
+pick mortgages to be securitized \citep{keys2008did}.
 
-However, securitization agencies' measures do not prevent moral
+However, these measures do not prevent moral
 hazard, since the credit score is not a perfect signal about the
-expected loss of a mortgage -- which is what the bank or the investors
-buying the mortgage backed securitized ultimately care about. One
+expected loss of a mortgage -- which is what the originating bank or the investors
+buying the mortgage backed securities ultimately care about. One
 reason is that the expected loss is the product of the probability of
 default and the loss given default. The credit score is only a proxy
 for the probability of default, but not the loss given default. Before
@@ -2011,7 +2022,7 @@ directly reveal information about the value of the property.
 
 Our theory and our data allow us to look more carefully at the
 question of moral hazard with respect to the loss given default: if a
-bank collected information about the value of the property (and hence
+bank collected information about the value of the collateral (and hence
 the loss given default) when it granted the mortgage, it is likely to
 have an informational advantage over third-party bidders during the
 foreclosure auction.
@@ -2030,7 +2041,7 @@ Hypothesis~\ref{hyp:discontinuity}:
 \begin{conjecture}[Probability of sale for securitized and non-securitized mortgages]\label{hyp:discontinuity-sec-nonsec}
   For securitized mortgages, the probability of sale $\rho(p_S)$ is a
   continuous, decreasing function of $p_S$. For non-securitized
-  mortgges, we should expect the probability of sale to the broker
+  mortgages, we should expect the probability of sale to the broker
   $\rho(p_S)$ to exhibit the following pattern. Initially, $\rho(p_S)$
   decreases in $p_S$. Then, over a certain interval $p_S \in [\tilde
   p, v_J)$, where $\tilde p < v_J$, $\rho(p_S)$ increases in $p_S$. At
@@ -2121,8 +2132,13 @@ categorization does give false negatives (for some securitized
 mortgages none of the keywords shows up in the name of the plaintiff),
 but almost no false positives.
 
-We have classified 3,249 mortgages as securitized and 9,539 as
-non-securitized. Figure~\ref{fig:distr-maxbid-sec-nonsec} plots the
+We have classified 3,249 mortgages as securitized and the remaining 9,539 as
+non-securitized.\footnote{We only considered private label securitization,
+since only 218 of the mortgages in our sample were securitized by
+Government Sponsored Enterprises. We identified mortgages as securitized
+by a Government Sponsored Enterprise as those for which the name of the
+plaintiff contains one of the following: "Federal National Mortgage Assoc[iation]",
+"Fannie Mae", "Federal Home Loan Mortgage Corp[oration]", or "Freddie Mac".} Figure~\ref{fig:distr-maxbid-sec-nonsec} plots the
 distributions of banks' bids for securitized and non-securitized
 mortgages. The average difference of the bank's bid as a fraction of
 the judgment amount is much lower for securitized than for
@@ -2198,7 +2214,8 @@ our theory as a tool to uncover evidence of asymmetric information. We
 will take two approaches for this. The first relies on our theoretical
 results on the discontinuity of the probability of sale at the
 judgment amount. For the second approach, we use additional data that
-we hand collected for a subset of the data set.
+we hand collected for a subset of the data set to correct for the selection
+effect.
 
 \subsection{Discontinuity}
 
@@ -2275,7 +2292,7 @@ bank.
 
 Figures~\ref{fig:probability-of-sale-securitized} and
 \ref{fig:probability-of-sale-nonsecuritized} provide indirect evidence
-for a common value component for non-securitized mortgages, while
+for asymmetric information for non-securitized mortgages, while
 there is no such evidence for the securitized mortgages. In this
 section, we develop and implement a direct test of our Hypothesis
 \ref{hyp:slope},
@@ -2320,10 +2337,7 @@ observations in the two data sets is not possible, since the address
 listed in the legal documents is not always of the same format (or
 containing the same details) as the information recorded in the
 appraisal database. In order to err on the side of caution, we only
-used observations for which we can be certain about the identity of
-the buyer (being the property at foreclosure under study).\AN{Steven,
-  I don't understand what "(being the property at foreclosure under
-  study)" means. Could you please clarify.}
+used observations for which we can be certain about the matching.
 
 We identified 332 properties among 644 foreclosed cases in the
 month.\footnote{There were 983 properties listed for foreclosure for
@@ -2338,8 +2352,9 @@ to 199 observations, with 77 of them in the category of securitized
 mortgages and 122 cases of non-securitized mortgages.
 
 Table~\ref{tab:descriptive-securitization-resale} provides descriptive
-statistics of the data collected.\AN{[POSSIBLY ADD COLUMN WITH
-  ASSESSMENT VALUE/JUDGMENT AMOUNT.]} The table suggests that part of
+statistics of the data collected. %\AN{[POSSIBLY ADD COLUMN WITH
+  %ASSESSMENT VALUE/JUDGMENT AMOUNT.]} 
+  The table suggests that part of
 the difference in sales prices between securitized and non-securitized
 mortgages is explained by a selection effect: the bank's resale price
 in case it wins the auction is higher for non-securitized than for
@@ -2446,7 +2461,7 @@ non-securitized mortgages.
       securitized & -1.17236 & 0.429416 & 0.33954 & 0.152791 \\
       non-securitized & -1.01577 & 0.588605 & 0.430615 & 0.277086
     \end{tabular}
-    \caption{Distribution of $x_S$ for securitized and non-securitized
+    \caption{Distribution of $x_S/v_J$ for securitized and non-securitized
       mortgages. The estimate is based on a log-normal distribution
       $x_S/v_J\sim \ln N(\mu_S,\sigma_S)$.\label{tab:xs}}
   \end{center}
@@ -2454,8 +2469,10 @@ non-securitized mortgages.
 
 
 Next, observe that the distribution of banks' bids satisfies
-$G_S(p_S(x_S))=F_S(x_S)$ if there is homogeneity with respect to the
-common value component. Since we only observe the distribution of the
+$G_S(p_S(x_S))=F_S(x_S)$ for $p_S(x_S)<v_J$ if there is homogeneity with respect to 
+asymmetric information.\footnote{We state results under the assumption of
+homogeneity of asymmetric information for the sake of expositional clarity. These
+results trivially extend to mixtures of symmetric and asymmetric auctions.} Since we only observe the distribution of the
 bank's resale prices if the bank wins the auction, it is useful to
 define $\tilde F_S(x_S)$ and $\tilde G_S(p_S)$ the distributions of
 $x_S$ and $p_S$ conditional on winning the auction.
@@ -2488,14 +2505,16 @@ Figure~\ref{fig:ps-xs-sec-nonsec} shows estimates of $p_S(x_S)$ for
 securitized and non-securitized mortgages. The estimates are
 consistent with our Hypothesis \ref{hyp:slope}, namely that the bank's
 bid is higher for non-securitized than for securitized mortgages,
-controlling for the bank's opportunity cost $x_S$.
+controlling for the bank's opportunity cost $x_S$. \PX{Showing inverse bidding function is good enough. 
+there is no point showing bidding function in (a). It will elicit unnecessary questions and challenges. eg. small number of observations led non-sec bid increase too fast.}
 
 Note that comparing the bidding functions for bids below $v_J$ is
 difficult, since the bidding function below $v_J$ has a different
-support for securitized and non-securitized mortgages. It is more
+support for securitized and non-securitized mortgages, $[0,x_S^\text{sec}(v_J)]$
+and $[0,x_S^\text{non-sec}(v_J)$, respectively. It is more
 practical to compare the inverse bidding function $x_S(p_S)$ for
 securitized and non-securitized mortgages, since the support is
-$[0,v_J]$ in both cases. The inverse bidding functions are shown if
+$[0,v_J]$ in both cases. The inverse bidding functions are shown in
 Figure~\ref{fig:xs-ps-sec-nonsec}. Computing the 90\% confidence
 interval of the difference of the inverse bidding functions for
 securitized and non-securitized mortgages reveals that the difference
@@ -2555,15 +2574,13 @@ banks holding non-securitized mortgages.
 This is consistent with the hypothesis of moral hazard in the
 securitization process: if a mortgage is expected to be securitized,
 then the originating bank has less incentives to collect information
-about the quality of the mortgage and will be hence less informed than
-for non-securitized mortgages. While the literature so far has focused
+about the quality of the mortgage and hence will be less informed. While the literature so far has focused
 on moral hazard with respect to acquiring information about the
-probability of default, our analysis has uncovered another dimension
-along which there is moral hazard: The bank exerts insufficient effort
-to collect information about the loss given default. Our results
+probability of default, our analysis has uncovered another dimension of moral hazard: the bank exerts insufficient effort
+to collect information about the collateral value, which directly affects the loss given default. Our results
 suggest that the effect of securitization on the loss given default is
-similarly important for the expected loss as the effect on the
-probability of default. The bank's resale price as a function of the
+equally important for the expected loss as the effect on the
+probability of default. The bank's resale price as a fraction of the
 judgment amount is 21\% lower for securitized than for non-securitized
 mortgages (0.340 vs 0.431).\footnote{We provide results for the resale
   prices rather than losses given default, since there is more
@@ -2578,283 +2595,113 @@ securitized versus non-securitized mortgages (5.5\% to 6\% versus 5\%)
 estimated by \cite{keys2008did}.
 
 The alternative explanation of adverse selection rather than moral
-hazard in implausible because of the institutional details of the
+hazard is implausible because of the institutional details of the
 securitization described at the beginning of this
 section.\footnote{The candidate for an alternative explanation would
   be adverse selection with a pooling equilibrium, which leads to loss
   of information. For adverse selection and a separating equilibrium,
-  no information is lost.} In particular, the securitization agency
+  no information is lost.} In particular, the special purpose vehicles
 prevent originating banks from cherry picking the mortgages they want
 to securitize and randomly selects mortgages from a mortgage pool. See
 \cite{keys2008did} for more details.
 
+% The information may also be lost in the securitization process. The originating bank may have additional informational advantages resulting from the intimate knowledge of the borrower's employment and income history, as well as  house improvements made by the borrower. It might apper that an institution that acts as a servicer of the securitized mortgage is less likely to have this information. However, mortgage originators are required to hold tranches of the mortgages they securitize, and thus may be able to pass this information to mortgage servicers. This makes this channel relatively less important.
+
 Another alternative explanation is that originating banks do collect
 information about the loss given default, but this information is lost
-at a later stage. However, this is also implausible, because
-originating banks are required to hold tranches of the securitized
-mortgage pool. If they had any relevant information about the quality
-of the property, they would have an incentive to use it in the
-foreclosure auction (or to share it with the plaintiff in the
-foreclosure auction).
+at a later stage. However, this is also implausible, because the originating bank
+typically serves as the servicer of the mortgage and hence deals with the
+foreclosure process \cite[see e.g.][]{cetorelli2012role}. Since the originating bank is required to hold
+tranches of the securitized mortgage pool, they have an incentive to
+make use of their information about quality of the collateral.
 
-Our results have a number of policy implications. First, it provides
+Another possible concern is a selection effect. Our first approach relies
+on patterns showing up in the data (the non-monotonicity and discontinuity
+of the probability of default) and does not rely on the assumption that
+there is no selection effect. Our second approach -- the estimation of
+the bidding function -- explicitly corrects for a selection effect in the
+quality of securitized and non-securitized mortgages. However, there is a
+selection effect we cannot control for with our foreclosure data: we only
+observe mortgages that defaulted. An alternative hypothesis to moral hazard is
+that securitized mortgages were less likely to default and hence it was less important to
+collect information about the value of the collateral. However, the existing
+literature actually finds the very opposite of this: securitized mortgages
+are \emph{more} likely to default.\AN{cite elul for average PD. keys et al. 
+provide evidence for "marginal" PD.} Hence more effort should be exerted
+when investigating the collateral of securitized mortgages.
+
+In the following, we will state the additional insight about policy questions
+that can be gained from our analysis of foreclosure auctions. The usual
+caveats apply: we are using data from Palm Beach County (FL) from 2010 to
+2013. While it appears 
+reasonable that data from other regions should reveal similar patterns,
+more research is needed. Our theoretical results and empirical techniques
+should facilitate such future research. Data from other periods of time
+is likely to reveal other patterns, since we are picking up foreclosures
+in the aftermath of the financial crisis in our data set. Such data should
+provide additional insight about the evolution of asymmetric information
+over time.
+
+Another caveat is that policy should be guided by the bigger picture rather
+than individual pieces of the picture, such as foreclosure auctions. Therefore,
+we will mostly discuss policy recommendations based on the bigger picture
+and state how our insights contribute to these.
+
+Our results provide
 further support for the concern about moral hazard in the
 securitization process. Our findings hence speak in favor of policies
 seeking to reduce moral hazard, such as requiring better documentation
-for securitized mortgages, reducing government support for
-securitization through securitization agencies, or holding the
+for securitized mortgages, reducing tax benefits for securitization, or holding the
 originating bank liable in case a mortgagee defaults (as is the case
-for European covered bonds), see e.g. \cite{keys2008did},
-\cite{tirole2011illiquidity}, and \cite{campbell2013mortgage}.
+for European covered bonds), see e.g. \cite{keys2008did}, \cite{dewatripont2010balancing},
+\cite{tirole2011illiquidity}, \cite{campbell2013mortgage}.
 
-Second, our results emphasize an additional dimension besides the
-probability of default along which moral hazard can affect the
-securitization process: the loss given default. This suggests that
+Further, our results emphasize a new aspect of moral hazard in the
+securitization process: the value of the collateral, which directly affects 
+the loss given default. This suggests that
 documentation not just of the characteristics of the borrower, but
-also of the property are important. At the same time, our finding also
-highlights some of the difficulties in new regulations: new regulatory
+also of the property is important. At the same time, our findings also
+highlight some of the difficulties in new regulations: new regulatory
 requirements set criteria for the documented loan-to-value ratio of
 mortgages, e.g. the new Solvency II Directive of the European Union
 requires that mortgages in the securitization pool to meet certain
-requirements on the loan-to-value ratio\footnote{See the Commission
+requirements on the loan-to-value ratio.\footnote{See the Commission
   Delegated Regulation (EU) 2015/35, Article 177(1)(h).} However, our
 results suggest that there is asymmetric information about the value
-of properties and hence also about the loan-to-value ratio.
+of properties and hence also about the loan-to-value ratio, which
+reduces the effectivity of such regulation.
 
-% \subsection{Non-Judicial Foreclosures}
-% \label{sec:non-judic-forecl}
-%
-% In this paper we have developed a theory of judicial foreclosures,
-% i.e. foreclosures that are organized by a court. Roughly half of the
-% states in the U.S. (including Florida) only allow judicial
-% foreclosures. The other half of the states allow both judicial and
-% non-judicial foreclosures. In a non-judicial foreclosure, the lender
-% typically has the \emph{power of sale} and can seize and sell the
-% house without going through a court. In the law literature on
-% foreclosure reform, it has been argued that allowing the bank to
-% seize the property and actively marketing it would simplify the
-% sales process \cite{nelson2004reforming}. It would also make it
-% easier for realtors to inspect the property, thereby reducing --
-% even if not completely removing -- asymmetric information. In the
-% following, we show the relevance of different foreclosure
-% procedures. To make the discussion simple, we take the extreme
-% stance that a non-judicial foreclosure allows to completely remove
-% the asymmetric information. In practice, one would expect that
-% asymmetric information would be reduced rather than completely
-% removed.\footnote{In practice, the non-judicial foreclosure
-% procedure is also less extreme than described here. Only Delaware
-% \citep{ghent2011recourse} has the extreme case of strict
-% non-judicial foreclosures in which all proceedings of the sale go to
-% the bank and the original owner gets nothing. Other states with
-% non-judicial foreclosures have limited borrower protection, see
-% \cite{ghent2011recourse}.}
-%
-% Note that comparing the utility of the original owner would be
-% trivial: with non-judicial foreclosures, the original owner does not
-% get anything, whereas with a judicial foreclosure, he may get
-% something, so he is trivially better off.
-%
-% Therefore, instead of the original owner's utility, we will compare
-% overall welfare in judicial and non-judicial foreclosures. Note that
-% we only need to consider the allocation rule, since transfers do not
-% matter for welfare. An allocation rule consists of the probability
-% $Q_S(\boldsymbol x_B,x_S)$ that the seller gets the house and the
-% probability $Q_B^i(\boldsymbol x_B,x_S)$ that buyer $i$ gets the
-% house as a function of the seller's signal $x_S$ and the vector of
-% buyers' signals $\boldsymbol x_B=(x_B^i)_{i=1}^n$. Welfare is then
-% the expected sum of utilities for a given allocation rule:
-% \begin{equation}
-%	\label{eq:welfare}
-%	\int_0^\infty ... \int_0^\infty \left[\sum_{i=1}^n Q_B^i(\boldsymbol
-%	x_B,x_S) u_B(x_B^i,x_S)+Q_S(\boldsymbol x_B,x_S) u_S(x_S)\right]
-%	dF_B(x_B^1)...dF_B(x_B^n)dF_S(x_S)
-%\end{equation}
-%Observe that $u_B(x_B,x_S)>u_S(x_S)$ iff $x_B>x_S$ since $u_B(x,x)=x$
-% and $u_B$ and $u_S$ are weakly increasing in their
-% arguments. Therefore, the social planner would maximize
-% \eqref{eq:welfare} by giving the house to the bidder with the
-% highest signal $x$. Formally, the first-best allocation rule is
-% \[
-% Q_S^*(\boldsymbol x_B,x_S) =
-% \begin{cases}
-%   1 & \text{if $x_S>\max_i x_B^i$,} \\
-%   0 & \text{otherwise,}
-% \end{cases}
-% \]
-% and
-% \[
-% Q_B^{i*}(\boldsymbol x_B,x_S) =
-% \begin{cases}
-%   1 & \text{if $Q_S^*(\boldsymbol x_B,x_S)=0$ and $x_B^i>x_B^j$ for all $j\neq i$,} \\
-%   0 & \text{otherwise.}
-% \end{cases}
-% \]
-% As usual, an arbitrary tie-breaking rule can be specified for the
-% zero-probability event that two signals are exactly the same.
-%
-% For a non-judicial foreclosure auction, we assume that the bank
-% sells the house in a standard auction with the same buyers with the
-% same valuations showing up as in a judicial foreclosure
-% auction. However, the bank is able to transmit the information to
-% the realtors directly, by advertising the property and allowing
-% inspections. Thus the nonjudicial foreclosures will be described by
-% independent private values model, with $x_S$ directly revealed to
-% the realtors.
-%
-%\paragraph{Independent Private Values}
-%In an independent private values setup, the bank sets the reserve
-% price equal to $J_B^{-1}(x_S)$ for all values of $x_S$ in a
-% non-judicial foreclosure where the virtual valuation function is
-% defined as $J_B(x_B):=x_B-(1-F_B(x_B))/f_B(x_B)$. Thus the marginal
-% buyer's cutoff is also equal to $J_B^{-1}(x_S)$. In a judicial
-% foreclosure, the marginal buyer type is given by $J_B^{-1}(x_S)$ for
-% $x_S<J_B(v_J)$ and is equal to $x_S$ for $x_S>v_J$.
-%
-% Figure~\ref{fig:judicial-ipv} shows the boundaries of the different
-% allocation rules for the one buyer case.  In first-best the buyer
-% gets the house, if the realization of signals is above the 45 degree
-% line (dashed). For judicial foreclosures, the buyer gets the house
-% above the dotted blue line. For non-judicial foreclosure, the buyer
-% gets the house above the sold red line. It is straightforward to
-% show that welfare is higher with judicial foreclosures than with
-% non-judicial foreclosures, since the deadweight loss of monopoly
-% (the area between the dashed and solid line for judicial, the area
-% between the dashed and the dotted line for non-judicial
-% foreclosures) is smaller.
-%
-%\begin{figure}[tbp]
-%  \centering
-%  \includegraphics[width=0.5\textwidth]{graphics/judicial-ipv}
-%  \caption{Judicial versus non-judicial foreclosure with independent
-%	 private values. Lines separating the regions in which the
-%	 seller and in which the buyer gets the house for first-best
-%	 allocation (black dashed 45 degree line), for judicial
-%	 foreclosure (solid red), and non-judicial foreclosure (blue
-%	 dotted).}
-%  \label{fig:judicial-ipv}
-%\end{figure}
-%
-%\paragraph{Common Values}
-%With adverse selection, the situation is more complicated as
-% illustrated in Figure~\ref{fig:judicial-common-values} for the one
-% buyer case. The blue dotted line corresponds to the non-judicial
-% foreclosure and comes from the solution under private values, where
-% the realtor knows $x_S$. The marginal buyer type with whom the
-% $x_S$-type bank will trade is found at the solution to the
-% ``marginal revenue equals cost" equation, \[
-% J_B(x_B^{nonjud}(x_S),x_S) = x_S.\] The red solid line is the
-% allocation rule for the judicial foreclosure implied by the seller's
-% pricing behavior derived in our paper, i.e. $X_B(p_S(x_S))$. Observe
-% that, due to the signalling premium, the solid line is above the
-% dotted line for $x_S<x_B^2$. However, since the judicial auction is
-% fully efficient for $x_S>x_B^2$, the solid line is below the dotted
-% line for $x_S>x_B^2$. Hence, it is ambiguous whether welfare would
-% be larger or smaller for non-judicial foreclosures.
-% \begin{figure}[tbp]
-%   \centering
-%   \includegraphics[width=0.5\textwidth]{graphics/judicial-common-values1}
-%   \caption{Judicial versus non-judicial foreclosure with a common
-%   value component. Lines separating the regions in which the seller
-%   and in which the buyer gets the house for first-best allocation
-%   (blue dotted 45 degree line), for judicial foreclosure (solid
-%   red), and non-judicial foreclosure (blue dashed).}
-%   \label{fig:judicial-common-values}
-% \end{figure}
-%
-% One gets a clear-cut welfare comparison if one lets $v_J$ go to
-% infinity. In this case, the reserve price set in a non-judicial
-% foreclosure auction $p_S^0(x_S)$ is lower than the price set in a
-% judicial foreclosure $p_S^*(x_S)$ due to the signaling
-% premium. Since $p_S^*(x_S) > p_S^0(x_S) > x_S$ and the first-best
-% reserve price is $x_S$, non-judicial foreclosures are more welfare
-% efficient.
-%
-% While a welfare ranking of judicial versus non-judicial foreclosures
-% depends on market conditions, our results do suggest some welfare
-% comparisons. For instance, for securitized mortgages, judicial
-% foreclosures are likely to be more efficient than non-judicial
-% foreclosures, since the relevance of the common value component
-% seems to be relatively small.
-%
-% On the other hand, in times of financial distress, when many
-% mortgages are "under water", the price is usually low compared to
-% the judgment amount. Hence, $v_J\rightarrow\infty$ is a reasonable
-% approximation and non-judicial foreclosures are more efficient.
-%
+
 \section{Conclusions}
 
 We develop a novel theory of foreclosure auctions and test some of its
 predictions with data from Palm Beach county (Florida, US). We find
 evidence for strategic bidding and asymmetric information, with the
 bank being the informed party. First, the data reveal bunching in bids
-at the judgment amount as the theory predicts either under symmetric
-or asymmetric information. Second, there is a discontinuity in the
+at the judgment amount as the theory predicts bother under symmetric
+and asymmetric information. Second, there is a non-monotonicity and discontinuity in the
 probability of sale to the brokers, as the theory predicts under
-asymmetric information. Third, by looking separately at securitized
-and non-securitized mortgages, we find that banks bid lower for the
-securitized mortgages. Our theory predicts lower bids when the bank is
-less informed.
+asymmetric information. 
 
-The latter findings are consistent with the hypothesis that moral
-hazard is involved in the securitization process: banks expect not to
-suffer from the entire loss of a default of a borrower. Hence, they
-will exert less effort collecting information about the value of the
+Our theory and empirical techniques have practical relevance: the presence
+of asymmetric information is crucial for mortgage securitization. We look
+separately at securitized and non-securitized mortgages and find that
+for securitized mortgages, the bank has less of an informational advantage,
+for two reasons. First, non-monotonicity and discontinuity are not present
+for securitized mortgages. Second, banks bid lower for securitized mortgages.
+
+This is consistent with the hypothesis that moral
+hazard is involved in the securitization process: the banks 
+may exert less effort collecting information about the value of the
 property used as collateral for a mortgage. These findings complement
 the findings in \cite{keys2008did} that banks collect less information
 about the probability of default for securitized than for
 non-securitized mortgages.
 
-% Recent literature, e.g.\ \cite{keys2008did} has emphasized the role
-% of soft information as the predictor of the probability of default.
-% Only hard, verifiable information is priced when the mortgage is
-% securitized. Knowing that the mortgage will be securitized, the
-% lender may not have sufficient incentives to collect soft
-% information. On the other hand, \cite{qi2009loss} present evidence
-% that the probability of default and loss given default are
-% positively correlated. Thus, soft financial information is relevant
-% for the property resale values, and loss of this information for the
-% securitized mortgages means also less information about the resale
-% values, thereby leading to lower bids in the foreclosure auctions.
-%
-% The implication of our findings in terms of the policy debate about
-% securitization is that there is an additional reason to be cautious
-% about securitization. This speaks in favor of some of the policies
-% that have been proposed, such as requiring better documentation for
-% securitized mortgages, reducing government support for
-% securitization through securitization agencies, or holding the
-% originating bank liable in case a mortgagee defaults (as is the case
-% for European covered bonds), see e.g. \cite{keys2008did},
-% \cite{tirole2011illiquidity}, and \cite{campbell2013mortgage}.
 
-%
-% which implies that our finding is consistent with the moral hazard
-% story.
-%
-%
-% To the extent that such information is correlated with the value of
-% the house, our results are consistent with the moral hazard
-% explanation.
-%
-% Our theory has the following main empirically testable predictions:
-% (i) that banks' bids are bunched at the judgment amount, (ii) if
-% there are both independent private values and common value component
-% auctions, there will a non-monotonicity and discontinuity of the
-% probability of sale in the bank's bid (the probability of sale
-% increases with the bank's bid just below and drops down at the
-% judgment amount). Using a novel data set, we show that predictions
-% (i) and (iii), but not (ii) are consistent with the data. This can
-% be interpreted as both independent private values and common value
-% component auctions showing up in the data set. Further, the data are
-% consistent with the claim that adverse selection plays less of a
-% role for securitized than for non-securitized mortgages. This is
-% consistent with the idea that local banks with non-securitized
-% mortgages have better information about the common value component
-% than non-local banks who act as trustees for pools of securitized
-% mortgages. These findings speak in support of policy proposals that
-% seek to restrict securitization.
 
-Our theory can also be used for a welfare comparison of judicial and
-non-judicial foreclosures.
+Our results can also be used for other policy relevant questions. One such
+question is a welfare comparison of judicial and non-judicial foreclosures.
 % Besides securitization as an application of our theory, we provide a
 % second example of an application: the welfare comparison of judicial
 % and non-judicial foreclosures.
@@ -2863,8 +2710,8 @@ in the U.S. (including Florida) only allow judicial foreclosures,
 i.e. the foreclosure auction has to be run by a court with rules as
 the ones described in this article. The other half of the states allow
 for both judicial and non-judicial foreclosures.  Mortgage contracts
-with a so called a ``power of sale'' clause allow the bank to choose a
-non-judicial foreclosure in case of a failure to repay, i.e. the bank
+with a so-called ``power of sale'' clause allow the bank to choose a
+non-judicial foreclosure if the borrower defaults, i.e. the bank
 can directly seize the property and sell it without going through a
 court.
 
@@ -2877,6 +2724,8 @@ proceedings above the judgment amount. Thus the monopoly price
 distortion now extends to prices above the judgment amount. So the
 overall welfare effect of the power of sale is ambiguous. We plan to
 estimate this effect in future work.
+
+%\renewcommand{\baselinestretch}{1}\normalsize
 
 \bibliography{foreclosures}
 % \bibliography{bilateral} \bibliographystyle{econometrica}
@@ -3262,10 +3111,10 @@ estimate this effect in future work.
     &= \int_{\ul x_S}^{\ol x_B} \frac{\partial u_B(\ol
       x_B,x_S)}{\partial \ol x_B} f_S(x_S) dx_S
     \\
-    &\geq \alpha (F_S(\ol x_B) - F_S(v_J)),
+    &\geq \theta (F_S(\ol x_B) - F_S(v_J)),
   \end{align*}
   where we have used the assumption that $\partial u_B/\partial x_B
-  \geq \alpha >0$. By integration, it then follows that for $\ol x_B
+  \geq \theta >0$. By integration, it then follows that for $\ol x_B
   \geq v_J$,
   \[
   H(\ul x_S, \ol x_B) \geq H( \ul x_S,v_J) + \int_{v_J}^{\ol x_B}
